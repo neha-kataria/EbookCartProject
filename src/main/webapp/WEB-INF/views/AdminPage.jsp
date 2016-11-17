@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AdminPage</title>
+        <title>Admin Page</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" href="resources/css/images/favicon.ico" />
 	<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="all" />
