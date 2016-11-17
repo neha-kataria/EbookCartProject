@@ -25,8 +25,6 @@ $(function () {
 $("#thumbUpload").change(function () {
 $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().lastIndexOf('\\') + 1));
 
-var filename=$("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().IndexOf('\\') + 1));
-alert(filename);
 });
 });
 </script>

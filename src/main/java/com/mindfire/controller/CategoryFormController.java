@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,11 +30,17 @@ import org.springframework.web.servlet.ModelAndView;
  * @author neha
  */
 @Controller
-public class CategoryFormController { 
+public class CategoryFormController implements ServletContextAware { 
      private ServletContext context;
     
     @Autowired
     private AddCategoryDAO categoryDao;
+    
+    
+     @Override
+    public void setServletContext(ServletContext sc) {
+      this.context=sc;
+    }
     
  /*   @RequestMapping(value="submitCategoryForm", method = RequestMethod.POST)
     public String addCategory(Model model,CategoryBean bean){
@@ -57,12 +64,40 @@ public class CategoryFormController {
     
     
     @RequestMapping(value = "submitCategoryForm", method = RequestMethod.POST)
-    public ModelAndView newContact(ModelAndView model,CategoryBean bean) {
+    public ModelAndView newContact(ModelAndView model,CategoryBean bean,@RequestParam("categoryName") String filename,@RequestParam("thumbUpload") MultipartFile file) {
         //Contact newContact = new Contact();
         System.out.println("%%%%%%%%Category"+bean.getCategoryName());
        // model.addObject("newCat", bean);
       // bean.setC_id(1);
+      //////////////////////////
+       if (!file.isEmpty()) {
+            try {
+                
+                System.out.println(">>>>>>>>>>>>> in try");
+                 System.out.println(">>>>>>>>>>>>> in try>>>>"+context.getContextPath());
+                System.out.println(context.getRealPath("/thumbnails/category")+"/"+filename);
+               
+                byte[] bytes = file.getBytes();
+                BufferedOutputStream stream =
+                        new BufferedOutputStream(new FileOutputStream(new File(context.getRealPath("/thumbnails/category")+"/"+filename)));
+                stream.write(bytes);
+                stream.close();
+                
+           //     return "You successfully uploaded " + filename + "!";
+            } catch (Exception e) {
+                 System.out.println(">>>>>>>>>>>>> in catch  >>>"+e.getMessage());
+          //      return "You failed to upload " + filename + " => " + e.getMessage();
+            }
+        } else {
+           System.out.println(">>>>>file is empty");
+         //   return "You failed to upload " + filename + " because the file was empty.";
+        }
+      //////////////////////////
+      
+      
+      
        bean.setPath("/");
+        
        categoryDao.saveOrUpdate(bean);
        System.out.println("%%%%%%%%after save method");
         model.setViewName("addSubcategoryPage");
@@ -70,8 +105,8 @@ public class CategoryFormController {
     }
     
     
-     /*
-    public @ResponseBody String uploadHandler(@RequestParam("filename") String filename,@RequestParam("file") MultipartFile file){
+   /*  
+    public @ResponseBody String uploadHandler(@RequestParam("categoryName") String filename,@RequestParam("thumbUpload") MultipartFile file){
 
         //file handling to upload it in the server path
         System.out.println(">>>>>>>>>>>>>>>>inside uploadhandler");
@@ -95,5 +130,6 @@ public class CategoryFormController {
 
     //    return "welcome";
     }
-    */
+*/
+    
 }
