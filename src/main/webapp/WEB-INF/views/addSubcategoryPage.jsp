@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,6 +21,34 @@
 
         <!-- Custom Theme Style -->
         <link href="resources/css/custom.min.css" rel="stylesheet">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script type="text/javascript">
+            
+$(function () {
+$("#subCatg_thumbUpload").change(function () {
+$("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUpload").val().lastIndexOf('\\') + 1));
+
+});
+});
+</script>
+
+<script type="text/javascript">
+                                   function readURL(input) {
+                                       alert(input);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }    
+    </script>
         <title>JSP Page</title>
     </head>
     <body class="nav-md">
@@ -198,13 +227,13 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Add Category </h2>
+                                            <h2>Add Sub-Category </h2>
                                             <ul class="nav navbar-right panel_toolbox">
                                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                 </li>
                                                 <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                                    <ul class="dropdown-menu" role="menu">
+                                                   <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    --><ul class="dropdown-menu" role="menu">
                                                         <li><a href="#">Settings 1</a>
                                                         </li>
                                                         <li><a href="#">Settings 2</a>
@@ -218,7 +247,7 @@
                                         </div>
                                         <div class="x_content">
                                             <br />
-                                            <form id="demo-form2" name="subCategoryForm" action="submitSubCategoryForm" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+                                            <form id="subcategory-form" name="subCategoryForm" action="submitSubCategoryForm" method="POST" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="subcategory-name">Sub-Category Name 
                                                         <span class="required">*</span>
@@ -231,23 +260,23 @@
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="parent-name">Parent Category <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="parent-name" name="parentName" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="parent-name" name="subCatg_parentName" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="shortDesc">Short Description <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="shortDesc" name="shortDesc" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="shortDesc" name="subCatg_shortDesc" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="show-title" class="control-label col-md-3 col-sm-3 col-xs-12">Show Category Title</label>
+                                                    <label for="show-title" class="control-label col-md-3 col-sm-3 col-xs-12">Show subCategory Title</label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <select id="show-title" name="showTitle" class="form-control">
+                                                        <select id="show-title" name="subCatg_showTitle" class="form-control">
 
-                                                            <option value="1" selected="selected">Show</option>
-                                                            <option value="0">Hide</option>
+                                                            <option value="show" selected="selected">Show</option>
+                                                            <option value="hide">Hide</option>
                                                         </select>
 
                                                     </div>
@@ -258,11 +287,17 @@
                                                     </label> <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                                     <div class="bs-glyphicons">
                                                         <ul class="bs-glyphicons-list">
-                                                            <li>
-                                                                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
-                                                                <span class="glyphicon-class">glyphicon glyphicon-camera</span>
-                                                            </li>
-                                                        </ul>
+                                                            <li ><input type="file" name="subCatg_thumbUpload" id="subCatg_thumbUpload" style="display: none" onchange="readURL(this);">
+                                                        <div onclick='$("#subCatg_thumbUpload").click()' >
+                                                            <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
+                                                            <span class="glyphicon-class" ><br>  Click to <br> upload</span>
+                                                        </div>
+                                                       
+                                                    </li>
+                                                    
+                                                </ul>
+                                                <div style="margin-left: 20%">  <span id="spnName"></span> </div>
+                                                <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
                                                     </div>
                                                 </div>
                                                 <div class="ln_solid"></div>
@@ -278,6 +313,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
 
 
 

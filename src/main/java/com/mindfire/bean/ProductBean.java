@@ -22,9 +22,18 @@ public class ProductBean {
     String shortDesc;
     String longDesc;
     String showTitle;
-    //   MultipartStream thumb;
-    MultipartFile thumb;
-    
+       MultipartFile thumbUpload;
+    String thumb_name;
+    String thumb_path;
+    int p_id;
+
+    public int getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(int p_id) {
+        this.p_id = p_id;
+    }
 
     public String getProductName() {
         return productName;
@@ -98,13 +107,31 @@ public class ProductBean {
         this.showTitle = showTitle;
     }
 
-    public MultipartFile getThumb() {
-        return thumb;
+    public String getThumb_name() {
+        return thumb_name;
     }
 
-    public void setThumb(MultipartFile thumb) {
-        this.thumb = thumb;
+    public void setThumb_name(String thumb_name) {
+        this.thumb_name = thumb_name;
     }
+
+    public String getThumb_path() {
+        return thumb_path;
+    }
+
+    public void setThumb_path(String thumb_path) {
+        this.thumb_path = thumb_path;
+    }
+
+    public MultipartFile getThumbUpload() {
+        return thumbUpload;
+    }
+
+    public void setThumbUpload(MultipartFile thumbUpload) {
+        this.thumbUpload = thumbUpload;
+    }
+
+ 
  
     
 }

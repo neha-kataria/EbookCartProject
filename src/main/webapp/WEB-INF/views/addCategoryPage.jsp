@@ -4,6 +4,10 @@
     Author     : neha
 --%>
 
+<%@page import="com.mindfire.service.AddCategoryImpl"%>
+<%@page import="com.mindfire.bean.CategoryBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,11 +35,27 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
 
 <script type="text/javascript">
                                    function readURL(input) {
+                                       alert(input);
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
                 $('#preview')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }    
+    
+     function readURLtable(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview1')
                     .attr('src', e.target.result)
                     .width(150)
                     .height(200);
@@ -279,7 +299,7 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                             <label for="show-title" class="control-label col-md-3 col-sm-3 col-xs-12">Show Category Title
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="show-title" name="showTitle" class="form-control">
+                                                <select id="show-title" name="catg_showTitle" class="form-control">
 
                                                     <option value="show" selected="selected">Show</option>
                                                     <option value="hide">Hide</option>
@@ -294,8 +314,8 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                             </label> <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                             <div class="bs-glyphicons" >
                                                 <ul class="bs-glyphicons-list" >
-                                                    <li ><input type="file" name="thumbUpload" id="thumbUpload" style="display: none" onchange="readURL(this);">
-                                                        <div onclick='$("#thumbUpload").click()' >
+                                                    <li ><input type="file" name="catg_thumbUpload" id="catg_thumbUpload" style="display: none" onchange="readURL(this);">
+                                                        <div onclick='$("#catg_thumbUpload").click()' >
                                                             <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
                                                             <span class="glyphicon-class" ><br>  Click to <br> upload</span>
                                                         </div>
@@ -358,8 +378,27 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
+                                    
+                       <!--   table code -->             
+                       <table border="2" style="width: 30%">         
+                            <c:forEach items="${catg_list}" var="catg">
+  <tr>
+   <td><c:out value="${catg.categoryName}" /></td>
+   <td><c:out value="${catg.parentName}" /></td>
+   <td><c:out value="${catg.catg_path}" /></td>
+   <td><c:out value="assets/category/${catg.catg_thumb_name}" />
+       <img src="<c:out value="assets/category/${catg.catg_thumb_name}" />" height="100" width="100" ></td>
+  
+   
+  
+  </tr>
+ </c:forEach>
+                       </table>                                    
+                                  
+                                    
+                                    
                                     <br />
-                                    <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
+                     <!--               <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
                                         <th>Category Icon</th>
                                         <th>Category Name</th>
                                         <th>Add Product/Sub-Category
@@ -388,6 +427,7 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
 
 
                                     </table>
+                     -->
                                 </div>
                             </div>
 

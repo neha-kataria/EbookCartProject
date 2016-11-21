@@ -5,7 +5,7 @@
  */
 package com.mindfire.bean;
 
-import org.apache.commons.fileupload.MultipartStream;
+
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -15,11 +15,16 @@ import org.springframework.web.multipart.MultipartFile;
 public class SubCategoryBean {
    // CategoryBean parent;
     String subcategoryName;
-    String parentName;
-    String shortDesc;
-    String showTitle;
+    String subCatg_parentName;
+    String subCatg_shortDesc;
+    String subCatg_showTitle;
+    String subCatg_path;
   //  MultipartStream thumb;
- MultipartFile thumb;
+ MultipartFile subCatg_thumbUpload;
+    String subCatg_thumb_path;
+    String subCatg_thumb_name;
+    int s_id;
+
     public String getSubcategoryName() {
         return subcategoryName;
     }
@@ -28,38 +33,70 @@ public class SubCategoryBean {
         this.subcategoryName = subcategoryName;
     }
 
-    public String getParentName() {
-        return parentName;
+    public String getSubCatg_parentName() {
+        return subCatg_parentName;
     }
 
-    public void setParentName(String parentName) {
-        this.parentName = parentName;
+    public void setSubCatg_parentName(String subCatg_parentName) {
+        this.subCatg_parentName = subCatg_parentName;
     }
 
-    public String getShortDesc() {
-        return shortDesc;
+    public String getSubCatg_shortDesc() {
+        return subCatg_shortDesc;
     }
 
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
+    public void setSubCatg_shortDesc(String subCatg_shortDesc) {
+        this.subCatg_shortDesc = subCatg_shortDesc;
     }
 
-    public String getShowTitle() {
-        return showTitle;
+    public String getSubCatg_showTitle() {
+        return subCatg_showTitle;
     }
 
-    public void setShowTitle(String showTitle) {
-        this.showTitle = showTitle;
+    public void setSubCatg_showTitle(String subCatg_showTitle) {
+        this.subCatg_showTitle = subCatg_showTitle;
     }
 
-    public MultipartFile getThumb() {
-        return thumb;
+    public String getSubCatg_path() {
+        return subCatg_path;
     }
 
-    public void setThumb(MultipartFile thumb) {
-        this.thumb = thumb;
+    public void setSubCatg_path(String subCatg_path) {
+        this.subCatg_path = subCatg_path;
     }
-    
+
+    public MultipartFile getSubCatg_thumbUpload() {
+        return subCatg_thumbUpload;
+    }
+
+    public void setSubCatg_thumbUpload(MultipartFile subCatg_thumbUpload) {
+        this.subCatg_thumbUpload = subCatg_thumbUpload;
+    }
+
+    public String getSubCatg_thumb_path() {
+        return subCatg_thumb_path;
+    }
+
+    public void setSubCatg_thumb_path(String subCatg_thumb_path) {
+        this.subCatg_thumb_path = subCatg_thumb_path;
+    }
+
+    public String getSubCatg_thumb_name() {
+        return subCatg_thumb_name;
+    }
+
+    public void setSubCatg_thumb_name(String subCatg_thumb_name) {
+        this.subCatg_thumb_name = subCatg_thumb_name;
+    }
+
+    public int getS_id() {
+        return s_id;
+    }
+
+    public void setS_id(int s_id) {
+        this.s_id = s_id;
+    }
+
     
     
 }

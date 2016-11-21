@@ -20,6 +20,34 @@
 
          <!-- Custom Theme Style -->
     <link href="resources/css/custom.min.css" rel="stylesheet">
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+     <script src="resources/ckeditor/ckeditor.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function () {
+$("#thumbUpload").change(function () {
+$("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().lastIndexOf('\\') + 1));
+
+});
+});
+</script>
+
+<script type="text/javascript">
+                                   function readURL(input) {
+                                       alert(input);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }    
+    </script>
         <title>JSP Page</title>
     </head>
     <body class="nav-md">
@@ -212,7 +240,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Add Category <small>different form elements</small></h2>
+                    <h2>Add Product <small>different form elements</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -232,7 +260,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="product-form" name="productForm" action="submitProductForm" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="product-form" name="productForm" action="submitProductForm" method="POST" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product-name">Product Name <span class="required">*</span>
                         </label>
@@ -287,7 +315,23 @@
                           <input type="text" id="shortDesc" name="shortDesc" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-                      <div class="form-group">
+                        
+                        <div class="form-group"> 
+                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="longDesc">Long Description <span class="required">*</span>
+                        </label>
+                        </div>
+                        <div style="margin-left:25%" > 
+                         <textarea name="longDesc" id="longDesc" rows="5" cols="100" >
+                Type here.
+            </textarea>
+                        </div>      
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'longDesc' );
+            </script>
+                        
+                    <!--  <div class="form-group">
                         <label for="show-title" class="control-label col-md-3 col-sm-3 col-xs-12">Show Category Title</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <select id="show-title" name="showTitle" class="form-control">
@@ -298,17 +342,23 @@
                          
                         </div>
                       </div>
-                      
+                      -->
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Icon <span class="required">*</span>
                         </label> <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
                           <div class="bs-glyphicons">
                           <ul class="bs-glyphicons-list">
-                          <li>
-                            <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
-                            <span class="glyphicon-class">glyphicon glyphicon-camera</span>
-                          </li>
-                          </ul>
+                          <li ><input type="file" name="thumbUpload" id="thumbUpload" style="display: none" onchange="readURL(this);">
+                                                        <div onclick='$("#thumbUpload").click()' >
+                                                            <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
+                                                            <span class="glyphicon-class" ><br>  Click to <br> upload</span>
+                                                        </div>
+                                                       
+                                                    </li>
+                                                    
+                                                </ul>
+                                                <div style="margin-left: 20%">  <span id="spnName"></span> </div>
+                                                <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
                           </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -325,7 +375,7 @@
               </div>
             </div>
 
-            
+      <!--      
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
@@ -435,7 +485,7 @@
                 </div>
               </div>
             </div>
-
+-->
             
         <!-- /page content -->
 

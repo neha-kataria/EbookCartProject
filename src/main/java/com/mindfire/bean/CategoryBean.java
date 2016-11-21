@@ -16,28 +16,13 @@ public class CategoryBean {
 
     String categoryName;
     String parentName;
-    String showTitle;
+    String catg_showTitle;
     //MultipartStream thumb;
-    MultipartFile thumbUpload;
-    String path;
+    MultipartFile catg_thumbUpload;
+    String catg_path;
     int c_id;
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public int getC_id() {
-        return c_id;
-    }
-
-    public void setC_id(int c_id) {
-        this.c_id = c_id;
-    }
-    
+    String catg_thumb_path;
+    String catg_thumb_name;
 
     public String getCategoryName() {
         return categoryName;
@@ -55,20 +40,53 @@ public class CategoryBean {
         this.parentName = parentName;
     }
 
-    public String getShowTitle() {
-        return showTitle;
+    public String getCatg_showTitle() {
+        return catg_showTitle;
     }
 
-    public void setShowTitle(String showTitle) {
-        this.showTitle = showTitle;
+    public void setCatg_showTitle(String catg_showTitle) {
+        this.catg_showTitle = catg_showTitle;
     }
 
-    public MultipartFile getThumbUpload() {
-        return thumbUpload;
+    public MultipartFile getCatg_thumbUpload() {
+        return catg_thumbUpload;
     }
 
-    public void setThumbUpload(MultipartFile thumb) {
-        this.thumbUpload = thumbUpload;
+    public void setCatg_thumbUpload(MultipartFile catg_thumbUpload) {
+        this.catg_thumbUpload = catg_thumbUpload;
     }
 
+    public String getCatg_path() {
+        return catg_path;
+    }
+
+    public void setCatg_path(String catg_path) {
+        this.catg_path = catg_path;
+    }
+
+    public int getC_id() {
+        return c_id;
+    }
+
+    public void setC_id(int c_id) {
+        this.c_id = c_id;
+    }
+
+    public String getCatg_thumb_path() {
+        return catg_thumb_path;
+    }
+
+    public void setCatg_thumb_path(String catg_thumb_path) {
+        this.catg_thumb_path = catg_thumb_path;
+    }
+
+    public String getCatg_thumb_name() {
+        return catg_thumb_name;
+    }
+
+    public void setCatg_thumb_name(String catg_thumb_name) {
+        this.catg_thumb_name = catg_thumb_name;
+    }
+
+   
 }

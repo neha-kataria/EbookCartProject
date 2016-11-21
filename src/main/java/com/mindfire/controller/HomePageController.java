@@ -5,6 +5,11 @@
  */
 package com.mindfire.controller;
 
+import com.mindfire.bean.CategoryBean;
+import com.mindfire.dao.AddCategoryDAO;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomePageController {
+     @Autowired
+    private AddCategoryDAO categoryDao;
+    
     
      @RequestMapping(value="/", method=RequestMethod.GET)
     public String init(Model model){
@@ -54,7 +62,9 @@ public class HomePageController {
     
       @RequestMapping(value="/addCategory", method=RequestMethod.GET)
     public String addCategory(Model model){
-      
+         List<CategoryBean> list=categoryDao.list();
+                  
+      model.addAttribute("catg_list",list);
         return "addCategoryPage";
       
     }

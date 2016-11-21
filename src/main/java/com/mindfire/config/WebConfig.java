@@ -6,7 +6,11 @@
 package com.mindfire.config;
 
 import com.mindfire.dao.AddCategoryDAO;
+import com.mindfire.dao.AddProductDAO;
+import com.mindfire.dao.AddSubCategoryDAO;
 import com.mindfire.service.AddCategoryImpl;
+import com.mindfire.service.AddProductImpl;
+import com.mindfire.service.AddSubCategoryImpl;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -49,7 +53,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/assets/**").addResourceLocations("file:///home/neha/NetBeansProjects/ebook_thumbnails/");
     }
+    
+    
     
     @Bean
 	public DataSource getDataSource() {
@@ -66,5 +73,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public AddCategoryDAO getCategoryDAO() {
 		return new AddCategoryImpl(getDataSource());
 	}
+        @Bean
+        public AddSubCategoryDAO getSubCategoryDAO(){
+            return new AddSubCategoryImpl(getDataSource());
+        }
+        @Bean
+        public AddProductDAO getProductDAO(){
+            return new AddProductImpl(getDataSource());
+        }
     
 }

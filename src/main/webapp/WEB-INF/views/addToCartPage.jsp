@@ -4,7 +4,10 @@
     Author     : neha
 --%>
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,5 +17,6 @@
     <body>
         <%@include file="header.jsp" %>
         <%@include file="footer.jsp" %>
+       
     </body>
 </html>
