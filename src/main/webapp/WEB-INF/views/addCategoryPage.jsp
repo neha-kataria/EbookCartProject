@@ -22,50 +22,50 @@
 
         <!-- Custom Theme Style -->
         <link href="resources/css/custom.min.css" rel="stylesheet">
-        
+
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-<script type="text/javascript">
-$(function () {
-$("#thumbUpload").change(function () {
-$("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().lastIndexOf('\\') + 1));
+        <script type="text/javascript">
+            $(function () {
+                $("#thumbUpload").change(function () {
+                    $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().lastIndexOf('\\') + 1));
 
-});
-});
-</script>
+                });
+            });
+        </script>
 
-<script type="text/javascript">
-                                   function readURL(input) {
-                                       alert(input);
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        <script type="text/javascript">
+            function readURL(input) {
+                alert(input);
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#preview')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
+                    reader.onload = function (e) {
+                        $('#preview')
+                                .attr('src', e.target.result)
+                                .width(150)
+                                .height(200);
+                    };
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }    
-    
-     function readURLtable(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
 
-            reader.onload = function (e) {
-                $('#preview1')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
+            function readURLtable(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }    
-                                   </script>
-                               
+                    reader.onload = function (e) {
+                        $('#preview1')
+                                .attr('src', e.target.result)
+                                .width(150)
+                                .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+
         <title>JSP Page</title>
     </head>
     <body class="nav-md">
@@ -114,7 +114,7 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                         <a><i class="fa fa-edit"></i>Category <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="/EbookCart/addCategory">Add Category</a></li>
-                                            <li><a href="showCategoryPage.jsp">Show Category</a></li>
+                                            <li><a href="/EbookCart/adminCategoryShowTable">Show Category</a></li>
                                             <li><a href="editCategoryPage.html">Edit Category</a></li>
 
                                         </ul>
@@ -123,10 +123,10 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                     <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="tables.html">Registered Users Table</a></li>
-                                            <li><a href="tables_dynamic.html">Product Table</a></li>
+                                            <li><a href="/EbookCart/adminProductShowTable">Product Table</a></li>
                                         </ul>
                                     </li>
-                                    <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+<!--                                    <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="chartjs.html">Chart JS</a></li>
                                             <li><a href="chartjs2.html">Chart JS2</a></li>
@@ -134,7 +134,7 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                             <li><a href="echarts.html">ECharts</a></li>
                                             <li><a href="other_charts.html">Other Charts</a></li>
                                         </ul>
-                                    </li>
+                                    </li>-->
 
                                 </ul>
                             </div>
@@ -319,21 +319,21 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                                             <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
                                                             <span class="glyphicon-class" ><br>  Click to <br> upload</span>
                                                         </div>
-                                                       
+
                                                     </li>
-                                                    
+
                                                 </ul>
                                                 <div style="margin-left: 20%">  <span id="spnName"></span> </div>
                                                 <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
                                             </div>
-                                            
+
                                         </div>
-                                   <!--     <input style="display:none" type="file" id="fileupload1" />
-<input type="button"  id="btnUpload" onclick='$("#fileupload1").click()' value="Upload"/>
-                                        
-                                       
-                                    <input type='file' onchange="readURL(this);" />
-    <img id="blah" src="#" alt="your image" /> -->
+                                        <!--     <input style="display:none" type="file" id="fileupload1" />
+     <input type="button"  id="btnUpload" onclick='$("#fileupload1").click()' value="Upload"/>
+                                             
+                                            
+                                         <input type='file' onchange="readURL(this);" />
+         <img id="blah" src="#" alt="your image" /> -->
                                 </div>
 
                             </div>
@@ -378,56 +378,77 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    
-                       <!--   table code -->             
-                       <table border="2" style="width: 30%">         
-                            <c:forEach items="${catg_list}" var="catg">
-  <tr>
-   <td><c:out value="${catg.categoryName}" /></td>
-   <td><c:out value="${catg.parentName}" /></td>
-   <td><c:out value="${catg.catg_path}" /></td>
-   <td><c:out value="assets/category/${catg.catg_thumb_name}" />
-       <img src="<c:out value="assets/category/${catg.catg_thumb_name}" />" height="100" width="100" ></td>
-  
-   
-  
-  </tr>
- </c:forEach>
-                       </table>                                    
-                                  
-                                    
-                                    
+
+                                    <!--   table code -->             
+                                    <!--       <table border="2" style="width: 30%">         -->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped jambo_table bulk_action">
+                                            <thead>
+                                                <tr class="headings">
+                                                    <th>
+                                                        <input type="checkbox" id="check-all" class="flat">
+                                                    </th>
+                                                    <th class="column-title">Id </th>
+                                                    <th class="column-title">Name </th>
+                                                    <th class="column-title">Thumbnail </th>
+                                                    <th class="column-title">Add Category/Product</th>
+
+                                                </tr>
+                                            </thead>
+                                            <c:forEach items="${catg_list}" var="catg">
+                                                <tr>
+                                                    <td><c:out value="${catg.c_id}" /></td>
+                                                    <td><c:out value="${catg.categoryName}" /></td>
+                                                    <td><c:out value="${catg.parentName}" /></td>
+                                                   <!-- <td><c:out value="${catg.catg_path}" /></td> -->
+                                                    <td><!--<c:out value="assets/category/${catg.catg_thumb_name}" />-->
+                                                        <img src="<c:out value="assets/category/${catg.catg_thumb_name}" />" height="100" width="100" ></td>
+                                                    <td ><a href="/EbookCart/addSubCategory">
+                                                            <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Sub-category</span></a>
+                                                            <br>
+                                                            <a href="/EbookCart/addProduct">
+                                                            <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Product</span></a>
+                                                    </td>
+
+
+
+                                                </tr>
+                                            </c:forEach>
+                                        </table>                                    
+                                    </div>       
+
+
                                     <br />
-                     <!--               <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
-                                        <th>Category Icon</th>
-                                        <th>Category Name</th>
-                                        <th>Add Product/Sub-Category
-                                        </th>
-                                        <tr>
-                                            <td><img src="resources/images/gandhi.jpg" style="width: 100px; height: 100px;"></td>
-                                            <td>Biography</td>
-                                            <td >
-                                                <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="resources/images/harrypotter.jpg" style="width: 100px; height: 100px;"></td>
-                                            <td>Novels</td>
-                                            <td >
-                                                <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="resources/images/journal.jpg" style="width: 100px; height: 100px;"></td>
-                                            <td>Journals</td>
-                                            <td >
-                                                <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                            </td>
-                                        </tr>
-
-
-                                    </table>
-                     -->
+                                    <!--               <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
+                                                       <th>Category Icon</th>
+                                                       <th>Category Name</th>
+                                                       <th>Add Product/Sub-Category
+                                                       </th>
+                                                       <tr>
+                                                           <td><img src="resources/images/gandhi.jpg" style="width: 100px; height: 100px;"></td>
+                                                           <td>Biography</td>
+                                                           <td >
+                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                                                           </td>
+                                                       </tr>
+                                                       <tr>
+                                                           <td><img src="resources/images/harrypotter.jpg" style="width: 100px; height: 100px;"></td>
+                                                           <td>Novels</td>
+                                                           <td >
+                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                                                           </td>
+                                                       </tr>
+                                                       <tr>
+                                                           <td><img src="resources/images/journal.jpg" style="width: 100px; height: 100px;"></td>
+                                                           <td>Journals</td>
+                                                           <td >
+                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                                                           </td>
+                                                       </tr>
+               
+               
+                                                   </table>
+                                    -->
                                 </div>
                             </div>
 
@@ -447,6 +468,49 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
         </div>
     </div>
 
+    <!-- 
+     <div class="table-responsive">
+                       <table class="table table-striped jambo_table bulk_action">
+                         <thead>
+                           <tr class="headings">
+                             <th>
+                               <input type="checkbox" id="check-all" class="flat">
+                             </th>
+                             <th class="column-title">Id </th>
+                             <th class="column-title">Name </th>
+                             <th class="column-title">Thumbnail </th>
+                             <th class="column-title">Add Category/Product</th>
+                             
+                           </tr>
+                         </thead>
+ 
+                         <tbody>
+                           <tr class="even pointer">
+                             <td class="a-center ">
+                               <input type="checkbox" class="flat" name="table_records">
+                             </td>
+                             <td class=" ">121000040</td>
+                             <td class=" ">May 23, 2014 11:47:56 PM </td>
+                             <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
+                             <td class=" ">John Blank L</td>
+                             
+                           </tr>
+                           <tr class="odd pointer">
+                             <td class="a-center ">
+                               <input type="checkbox" class="flat" name="table_records">
+                             </td>
+                             <td class=" ">121000039</td>
+                             <td class=" ">May 23, 2014 11:30:12 PM</td>
+                             <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
+                             </td>
+                             <td class=" ">John Blank L</td>
+                             
+                           </tr>
+                          
+                         </tbody>
+                       </table>
+                     </div>
+    -->
 
     <!-- footer content -->
     <!--      <footer>
@@ -499,18 +563,18 @@ $("#spnName").html($("#thumbUpload").val().substring($("#thumbUpload").val().las
 
 <!-- Select2 -->
 <script>
-    $(document).ready(function () {
-        $(".select2_single").select2({
-            placeholder: "Select a state",
-            allowClear: true
-        });
-        $(".select2_group").select2({});
-        $(".select2_multiple").select2({
-            maximumSelectionLength: 4,
-            placeholder: "With Max Selection limit 4",
-            allowClear: true
-        });
-    });
+                                                            $(document).ready(function () {
+                                                                $(".select2_single").select2({
+                                                                    placeholder: "Select a state",
+                                                                    allowClear: true
+                                                                });
+                                                                $(".select2_group").select2({});
+                                                                $(".select2_multiple").select2({
+                                                                    maximumSelectionLength: 4,
+                                                                    placeholder: "With Max Selection limit 4",
+                                                                    allowClear: true
+                                                                });
+                                                            });
 </script>
 <!-- /Select2 -->
 

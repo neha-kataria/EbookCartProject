@@ -90,8 +90,10 @@ public class CategoryFormController implements ServletContextAware {
       
       
       System.out.println(">>>"+time);
-       bean.setSubCatg_path("/");
-       bean.setSubCatg_thumb_path("/home/neha/NetBeansProjects/ebook_thumbnails/subcategory//");
+      System.out.println(">>>"+bean.getSubCatg_parentName());
+       bean.setSubCatg_path("/"+bean.getSubCatg_parentName());
+     
+        bean.setSubCatg_thumb_path("/home/neha/NetBeansProjects/ebook_thumbnails/subcategory//");
        bean.setSubCatg_thumb_name(file_name);
       // System.out.println(bean.getCategoryName()+"_"+time);
         
@@ -135,7 +137,7 @@ public class CategoryFormController implements ServletContextAware {
       
       
       System.out.println(">>>"+time);
-    //   bean.setPath("/");
+      bean.setPath("/"+bean.getParentName()+"/"+bean.getSubCategoryName());
        bean.setThumb_path("/home/neha/NetBeansProjects/ebook_thumbnails/product//");
        bean.setThumb_name(file_name);
       // System.out.println(bean.getCategoryName()+"_"+time);
@@ -146,8 +148,9 @@ public class CategoryFormController implements ServletContextAware {
        
         
        // return "addCategoryPage";
-       model.setViewName("addCategoryPage");
-       return model;
+    //  model.setViewName("addCategoryPage");
+     model.setViewName("redirect:addCategory");
+     return model;
     }
     
     
@@ -186,6 +189,7 @@ public class CategoryFormController implements ServletContextAware {
       
       
       System.out.println(">>>"+time);
+     
        bean.setCatg_path("/");
        bean.setCatg_thumb_path("/home/neha/NetBeansProjects/ebook_thumbnails/category//");
        bean.setCatg_thumb_name(file_name);

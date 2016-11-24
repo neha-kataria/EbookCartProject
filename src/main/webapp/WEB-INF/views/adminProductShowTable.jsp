@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addCategoryPage
-    Created on : 8 Nov, 2016, 9:56:19 AM
+    Document   : adminShowTable
+    Created on : 22 Nov, 2016, 1:03:56 PM
     Author     : neha
 --%>
 
@@ -94,6 +94,7 @@
                         <br />
 
 
+                        
                         <!-- sidebar menu -->
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
@@ -226,7 +227,7 @@
                     <div class="">
                         <div class="page-title">
                             <br>
-                            <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
+<!--                            <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
                                 <ul style="list-style: none; padding-left: 33px; float: left; display: inline; ">
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="#" class="active" style="font-weight: bold;text-decoration: underline">Category</a></li>
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addSubCategory">Sub-Category</a></li>
@@ -235,7 +236,7 @@
 
                                 </ul>
 
-                            </div>
+                            </div>-->
                             <br>
 
 
@@ -243,123 +244,17 @@
                         </div>
 
                         <div class="title_right">
-                            <!--  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="Search for...">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                  </span>
-                                </div>
-                              </div>-->
+                           
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Add Category <small>different form elements</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown" >
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <br />
-                                    <form id="category-form" name="categoryForm" action="submitCategoryForm" method="POST" enctype="multipart/form-data"  data-parsley-validate class="form-horizontal form-label-left">
 
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category Name
-                                                <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="categoryName" id="category-name" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="parent-name">Parent Category <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="parent-name" name="parentName" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="show-title" class="control-label col-md-3 col-sm-3 col-xs-12">Show Category Title
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="show-title" name="catg_showTitle" class="form-control">
-
-                                                    <option value="show" selected="selected">Show</option>
-                                                    <option value="hide">Hide</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Icon 
-                                                <span class="required">*</span>
-                                            </label> <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                            <div class="bs-glyphicons" >
-                                                <ul class="bs-glyphicons-list" >
-                                                    <li ><input type="file" name="catg_thumbUpload" id="catg_thumbUpload" style="display: none" onchange="readURL(this);">
-                                                        <div onclick='$("#catg_thumbUpload").click()' >
-                                                            <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
-                                                            <span class="glyphicon-class" ><br>  Click to <br> upload</span>
-                                                        </div>
-
-                                                    </li>
-
-                                                </ul>
-                                                <div style="margin-left: 20%">  <span id="spnName"></span> </div>
-                                                <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
-                                            </div>
-
-                                        </div>
-                                        <!--     <input style="display:none" type="file" id="fileupload1" />
-     <input type="button"  id="btnUpload" onclick='$("#fileupload1").click()' value="Upload"/>
-                                             
-                                            
-                                         <input type='file' onchange="readURL(this);" />
-         <img id="blah" src="#" alt="your image" /> -->
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="clear"></div>
-
-
-                        </li>
-                        <div class="ln_solid"></div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="reset" class="btn btn-primary">Cancel</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-
-                        </form>
-                    </div>
                     <!--     new row ------>
                     <br><br>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Category List </h2>
+                                    <h2>Product List </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -385,33 +280,28 @@
                                         <table class="table table-striped jambo_table bulk_action">
                                             <thead>
                                                 <tr class="headings">
-                                                    <th>
+<!--                                                    <th>
                                                         <input type="checkbox" id="check-all" class="flat">
-                                                    </th>
+                                                    </th>-->
                                                     <th class="column-title">Id </th>
-                                                    <th class="column-title">Name </th>
                                                     <th class="column-title">Thumbnail </th>
-                                                    <th class="column-title">Add Category/Product</th>
+                                                    <th class="column-title">Name </th>
+                                                    <th class="column-title">Parent Category </th>
+                                                    <th class="column-title">Total Quantity </th>
+                                                    <th class="column-title">Available Quantity </th>
+                                                    
+                                                    
 
                                                 </tr>
                                             </thead>
                                             <c:forEach items="${catg_list}" var="catg">
                                                 <tr>
-                                                    <td><c:out value="${catg.c_id}" /></td>
-                                                    <td><c:out value="${catg.categoryName}" /></td>
+                                                    <td><c:out value="${catg.p_id}" /></td>
+                                                    <td><img src="<c:out value="assets/product/${catg.thumb_name}" />" height="100" width="100" ></td>
+                                                    <td><c:out value="${catg.productName}" /></td>
                                                     <td><c:out value="${catg.parentName}" /></td>
-                                                   <!-- <td><c:out value="${catg.catg_path}" /></td> -->
-                                                    <td><!--<c:out value="assets/category/${catg.catg_thumb_name}" />-->
-                                                        <img src="<c:out value="assets/category/${catg.catg_thumb_name}" />" height="100" width="100" ></td>
-                                                    <td ><a href="/EbookCart/addSubCategory">
-                                                            <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Sub-category</span></a>
-                                                            <br>
-                                                            <a href="/EbookCart/addProduct">
-                                                            <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Product</span></a>
-                                                    </td>
-
-
-
+                                                    <td><c:out value="${catg.totalQuant}" /></td> 
+                                                    <td><c:out value="${catg.availQuant}" /></td> 
                                                 </tr>
                                             </c:forEach>
                                         </table>                                    
@@ -419,36 +309,7 @@
 
 
                                     <br />
-                                    <!--               <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
-                                                       <th>Category Icon</th>
-                                                       <th>Category Name</th>
-                                                       <th>Add Product/Sub-Category
-                                                       </th>
-                                                       <tr>
-                                                           <td><img src="resources/images/gandhi.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Biography</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-                                                       <tr>
-                                                           <td><img src="resources/images/harrypotter.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Novels</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-                                                       <tr>
-                                                           <td><img src="resources/images/journal.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Journals</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-               
-               
-                                                   </table>
-                                    -->
+                                   
                                 </div>
                             </div>
 
@@ -468,58 +329,7 @@
         </div>
     </div>
 
-    <!-- 
-     <div class="table-responsive">
-                       <table class="table table-striped jambo_table bulk_action">
-                         <thead>
-                           <tr class="headings">
-                             <th>
-                               <input type="checkbox" id="check-all" class="flat">
-                             </th>
-                             <th class="column-title">Id </th>
-                             <th class="column-title">Name </th>
-                             <th class="column-title">Thumbnail </th>
-                             <th class="column-title">Add Category/Product</th>
-                             
-                           </tr>
-                         </thead>
- 
-                         <tbody>
-                           <tr class="even pointer">
-                             <td class="a-center ">
-                               <input type="checkbox" class="flat" name="table_records">
-                             </td>
-                             <td class=" ">121000040</td>
-                             <td class=" ">May 23, 2014 11:47:56 PM </td>
-                             <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                             <td class=" ">John Blank L</td>
-                             
-                           </tr>
-                           <tr class="odd pointer">
-                             <td class="a-center ">
-                               <input type="checkbox" class="flat" name="table_records">
-                             </td>
-                             <td class=" ">121000039</td>
-                             <td class=" ">May 23, 2014 11:30:12 PM</td>
-                             <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                             </td>
-                             <td class=" ">John Blank L</td>
-                             
-                           </tr>
-                          
-                         </tbody>
-                       </table>
-                     </div>
-    -->
-
-    <!-- footer content -->
-    <!--      <footer>
-            <div class="pull-right">
-              ebookcart - Bootstrap Admin Template 
-            </div>
-            <div class="clearfix"></div>
-          </footer>
-    <!-- /footer content -->
+   
 </div>
 </div>
 

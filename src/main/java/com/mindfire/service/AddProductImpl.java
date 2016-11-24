@@ -37,17 +37,17 @@ public class AddProductImpl implements AddProductDAO{
                 if (product.getP_id() > 0) {
 		// update
 		String sql = "UPDATE product SET name=?,sub_catg_name=?, parent_name=?,total_quantity=?, avail_quantity=?, "
-					+ "price=?, short_desc=?, long_desc=?, thumb_name=?, thumb_path=? WHERE id=?";
+					+ "price=?, short_desc=?, long_desc=?, thumb_name=?, thumb_path=? , product_path=? WHERE id=?";
 		jdbcTemplate.update(sql, product.getProductName(),product.getSubCategoryName(),product.getParentName(),
-                        product.getTotalQuant(),product.getAvailQuant(),product.getShortDesc(), product.getLongDesc(),product.getThumb_path(),product.getThumb_name());
+                        product.getTotalQuant(),product.getAvailQuant(),product.getShortDesc(), product.getLongDesc(),product.getThumb_path(),product.getThumb_name(),product.getPath());
 	} else {
 		// insert
                 System.out.println(">>>>>>>>>>>>>>>>>>inside save update method in else block");
 		String sql = "INSERT INTO product (name, sub_catg_name, parent_name,total_quantity, avail_quantity, "
-					+ "price, short_desc,long_desc,thumb_path,thumb_name)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "price, short_desc,long_desc,thumb_path,thumb_name,product_path)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 		jdbcTemplate.update(sql, product.getProductName(),product.getSubCategoryName(),product.getParentName(),
-                        product.getTotalQuant(),product.getAvailQuant(),product.getPrice(),product.getShortDesc(),product.getThumb_path(),product.getThumb_name());
+                        product.getTotalQuant(),product.getAvailQuant(),product.getPrice(),product.getShortDesc(),product.getLongDesc(),product.getThumb_path(),product.getThumb_name(),product.getPath());
 	}
 
 

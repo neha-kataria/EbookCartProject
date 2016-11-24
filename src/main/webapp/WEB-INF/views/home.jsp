@@ -3,7 +3,7 @@
     Created on : 5 Nov, 2016, 10:37:56 PM
     Author     : neha
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,110 +81,25 @@
         <div class="products">
             <h3>Featured Products</h3>
             <ul>
+                <c:forEach items="${prod_list}" var="prod">
                 <li>
                     <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image01.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
+                        <!--<a href="#" class="info">-->
+                        <div class="info">
+                            <span class="holder" >
+                                <img src="<c:out value="assets/product/${prod.thumb_name}" />" alt="" />
+                                <span class="book-name"><c:out value="${prod.productName}" /></span>
+                                <span class="author">Available quantity : <c:out value="${prod.availQuant}" /></span>
+                                <span class="description"><c:out value="${prod.shortDesc}" /></span>
                             </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
+                        
+                            <a href="#">
+                            <div  class="buy-btn">BUY NOW <span class="price"><span class="low"></span><c:out value="${prod.price}" /></span></div></a>
+                    <!--</a>-->
+                        </div>
                     </div>
                 </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image02.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image03.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image04.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image05.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image06.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image07.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="product">
-                        <a href="#" class="info">
-                            <span class="holder">
-                                <img src="resources/images/image08.jpg" alt="" />
-                                <span class="book-name">Book Name</span>
-                                <span class="author">by John Smith</span>
-                                <span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-                            </span>
-                        </a>
-                        <a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-                    </div>
-                </li>
+     </c:forEach>
             </ul>
             <!-- End Products -->
         </div>

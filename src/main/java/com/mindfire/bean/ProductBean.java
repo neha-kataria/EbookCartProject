@@ -25,6 +25,7 @@ public class ProductBean {
        MultipartFile thumbUpload;
     String thumb_name;
     String thumb_path;
+    String path;
     int p_id;
 
     public int getP_id() {
@@ -129,6 +130,14 @@ public class ProductBean {
 
     public void setThumbUpload(MultipartFile thumbUpload) {
         this.thumbUpload = thumbUpload;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
  

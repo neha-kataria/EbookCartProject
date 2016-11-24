@@ -53,49 +53,50 @@
 
             <br />
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-             
-                <div class="menu_section">
-                  
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li>
-                      <a >
-                          <i class="fa fa-home"></i>
-                          Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/EbookCart/admin">Dashboard</a></li>
-                    
-                    </ul>
-                  </li>
-                  <li>
-                      <a><i class="fa fa-edit"></i>Category <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/EbookCart/addCategory">Add Category</a></li>
-                      <li><a href="showCategoryPage.jsp">Show Category</a></li>
-                      <li><a href="editCategoryPage.html">Edit Category</a></li>
-                      
-                    </ul>
-                  </li>
-                 
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Registered Users Table</a></li>
-                      <li><a href="tables_dynamic.html">Product Table</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  
-                </ul>
+           
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                            <div class="menu_section">
+
+                                <h3>General</h3>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a >
+                                            <i class="fa fa-home"></i>
+                                            Home <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/EbookCart/admin">Dashboard</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i>Category <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/EbookCart/addCategory">Add Category</a></li>
+                                            <li><a href="/EbookCart/adminCategoryShowTable">Show Category</a></li>
+                                            <li><a href="editCategoryPage.html">Edit Category</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="tables.html">Registered Users Table</a></li>
+                                            <li><a href="/EbookCart/adminProductShowTable">Product Table</a></li>
+                                        </ul>
+                                    </li>
+<!--                                    <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="chartjs.html">Chart JS</a></li>
+                                            <li><a href="chartjs2.html">Chart JS2</a></li>
+                                            <li><a href="morisjs.html">Moris JS</a></li>
+                                            <li><a href="echarts.html">ECharts</a></li>
+                                            <li><a href="other_charts.html">Other Charts</a></li>
+                                        </ul>
+                                    </li>-->
+
+                                </ul>
               </div>
               <div class="menu_section">
                 <h3>Live On</h3>

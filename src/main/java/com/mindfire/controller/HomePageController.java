@@ -6,7 +6,11 @@
 package com.mindfire.controller;
 
 import com.mindfire.bean.CategoryBean;
+import com.mindfire.bean.ProductBean;
+import com.mindfire.bean.SubCategoryBean;
 import com.mindfire.dao.AddCategoryDAO;
+import com.mindfire.dao.AddProductDAO;
+import com.mindfire.dao.AddSubCategoryDAO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomePageController {
      @Autowired
     private AddCategoryDAO categoryDao;
-    
+    @Autowired
+    private AddSubCategoryDAO subcategoryDao;
+    @Autowired
+    private AddProductDAO productDao;
     
      @RequestMapping(value="/", method=RequestMethod.GET)
     public String init(Model model){
-      
+      List<ProductBean> list=productDao.list();
+      model.addAttribute("prod_list", list);
         return "home";
       
     }
@@ -111,6 +119,38 @@ public class HomePageController {
     public String addToCart(Model model){
       
         return "addToCartPage";
+       
+    }
+    
+    @RequestMapping(value="/fb", method=RequestMethod.GET)
+    public String fb(Model model){
+      
+        return "fbLogin";
+       
+    }
+    @RequestMapping(value="/adminCategoryShowTable", method=RequestMethod.GET)
+    public String adminCategoryShowTable(Model model){
+       List<CategoryBean> list=categoryDao.list();
+                  
+      model.addAttribute("catg_list",list);
+        return "adminCategoryShowTable";
+       
+    }
+    
+     @RequestMapping(value="/adminSubCategoryShowTable", method=RequestMethod.GET)
+    public String adminSubCategoryShowTable(Model model){
+       List<SubCategoryBean> list=subcategoryDao.list();
+                  
+      model.addAttribute("catg_list",list);
+        return "adminSubCategoryShowTable";
+       
+    }
+    @RequestMapping(value="/adminProductShowTable", method=RequestMethod.GET)
+    public String adminProductShowTable(Model model){
+       List<ProductBean> list=productDao.list();
+                  
+      model.addAttribute("catg_list",list);
+        return "adminProductShowTable";
        
     }
 }
