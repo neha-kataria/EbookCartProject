@@ -24,7 +24,7 @@ and open the template in the editor.
 .products ul { list-style: none; position: relative; width: 660px; margin-left: -7px; width: 660px; }
 .products ul li { float: left; display: inline; width: 200px; height: 500px; margin: 0 15px 14px 0; }
 .products ul li a.info { display: block; padding: 7px; width: 150px; height: 400px; }
-.products ul li a.info:hover { background: #dcdcdc; width: 150px; height: 380pz; }
+.products ul li a.info:hover { background: #dcdcdc; width: 150px; height: 380px; }
 .products ul li a.info .holder { padding: 5px 4px; border: solid 3px #dcdcdc; display: block; width: 150px; height: 380px; }
 .products ul li .info .holder { padding: 5px 4px; border: solid 3px #dcdcdc; display: block; width: 150px; height: 380px; margin-left: 20px; }
 .products .product { width: 150px; position: relative;height: 450px; }
