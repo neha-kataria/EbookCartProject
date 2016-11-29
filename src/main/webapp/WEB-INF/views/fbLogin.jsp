@@ -88,9 +88,9 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      window.location.href = '/EbookCart/';
+//      window.location.href = '/EbookCart/';
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Thanks for logging in, ' + response.name + ' and '+ response.id+' and '+ response.email+' !';
     });
   }
 </script>
@@ -100,13 +100,13 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-<!--
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>-->
 
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+<!--
 <form>
     <input type="submit" value="login" onclick="checkLoginState()">
-</form>
+</form>-->
 <div id="status">
 </div>
 

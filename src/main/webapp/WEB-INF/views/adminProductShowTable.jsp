@@ -294,7 +294,7 @@
 
                                                 </tr>
                                             </thead>
-                                            <c:forEach items="${catg_list}" var="catg">
+                                            <c:forEach items="${prod_list}" var="catg">
                                                 <tr>
                                                     <td><c:out value="${catg.p_id}" /></td>
                                                     <td><img src="<c:out value="assets/product/${catg.thumb_name}" />" height="100" width="100" ></td>

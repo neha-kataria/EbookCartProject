@@ -8,9 +8,11 @@ package com.mindfire.config;
 import com.mindfire.dao.AddCategoryDAO;
 import com.mindfire.dao.AddProductDAO;
 import com.mindfire.dao.AddSubCategoryDAO;
+import com.mindfire.dao.AddUserDAO;
 import com.mindfire.service.AddCategoryImpl;
 import com.mindfire.service.AddProductImpl;
 import com.mindfire.service.AddSubCategoryImpl;
+import com.mindfire.service.AddUserImpl;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -55,31 +57,36 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
         registry.addResourceHandler("/assets/**").addResourceLocations("file:///home/neha/NetBeansProjects/ebook_thumbnails/");
     }
-    
-    
-    
+
     @Bean
-	public DataSource getDataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/EbookCartProject");
-		dataSource.setUsername("root");
-		dataSource.setPassword("mindfire");
-		
-		return dataSource;
-	}
-	
-	@Bean
-	public AddCategoryDAO getCategoryDAO() {
-		return new AddCategoryImpl(getDataSource());
-	}
-        @Bean
-        public AddSubCategoryDAO getSubCategoryDAO(){
-            return new AddSubCategoryImpl(getDataSource());
-        }
-        @Bean
-        public AddProductDAO getProductDAO(){
-            return new AddProductImpl(getDataSource());
-        }
-    
+    public DataSource getDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/EbookCartProject");
+        dataSource.setUsername("root");
+        dataSource.setPassword("mindfire");
+
+        return dataSource;
+    }
+
+    @Bean
+    public AddCategoryDAO getCategoryDAO() {
+        return new AddCategoryImpl(getDataSource());
+    }
+
+    @Bean
+    public AddSubCategoryDAO getSubCategoryDAO() {
+        return new AddSubCategoryImpl(getDataSource());
+    }
+
+    @Bean
+    public AddProductDAO getProductDAO() {
+        return new AddProductImpl(getDataSource());
+    }
+
+    @Bean
+    public AddUserDAO getUserDAO() {
+        return new AddUserImpl(getDataSource());
+    }
+
 }

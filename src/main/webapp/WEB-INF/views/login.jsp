@@ -36,6 +36,7 @@
     <input id="password" type="password" placeholder="Password" name="password" />
     <label for="password" class="entypo-lock"></label>
   </div>
+          
   <div class="buttons">
     <input type="submit" value="Login" />
     <span>
@@ -121,12 +122,17 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
+     
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      window.location.href = '/EbookCart/';
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      
+//      document.getElementById('status').innerHTML =
+//        'Thanks for logging in, ' + response.name + '!';
+document.getElementById("login_type").value="facebook";
+document.getElementById("login_name").value=response.name;
+window.location.href = '/EbookCart/'
+
     });
   }
   
@@ -136,7 +142,12 @@
     document.getElementById('fb').addEventListener('click',checkLoginState,false);
 </script>
   <div class="social">
-    <a href="https://www.facebook.com/dialog/oauth?client_id=383742011962035&redirect_uri=http://localhost:8080/EbookCart/" class="facebook"></a>
+    <!--<a href="https://www.facebook.com/dialog/oauth?scope=email,read_stream&client_id=383742011962035&redirect_uri=http://localhost:8080/EbookCart/?login_name=" class="facebook"></a>-->
+    
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+    <input type="hidden" id="login_type" name="login_type" value="facebook">
+    <input type="hidden" id="login_name" name="login_name" value="n">
     <a href="#" onclick="checkLoginStatus()" class="twitter"></a>
     <a href="javascript:void(0)" class="googleplus"></a>
   </div>

@@ -62,9 +62,9 @@ public class AddProductImpl implements AddProductDAO{
     }
 
     @Override
-    public ProductBean get(int p_id) {
+    public ProductBean get(String p_name) {
        // implementation details goes here...
-                String sql = "SELECT * FROM product WHERE id=" + p_id;
+                String sql = "SELECT * FROM product WHERE name='" + p_name+"'";
 	return jdbcTemplate.query(sql, new ResultSetExtractor<ProductBean>() {
 
 		@Override

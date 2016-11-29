@@ -6,6 +6,8 @@
 package com.mindfire.controller;
 
 import com.mindfire.bean.RegisterUserBean;
+import com.mindfire.dao.AddUserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +19,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class RegistrationController {
+    @Autowired
+    AddUserDAO userDao;
 
     @RequestMapping(value="submitResgiterationForm", method = RequestMethod.POST)
     public String registerUser(Model model,RegisterUserBean bean){
         System.out.println("registeration:"+bean.getUsername());
-        return "home";
+        bean.setLogin_type("signup");
+        userDao.saveOrUpdate(bean);
+        return "login";
     }
     
 }

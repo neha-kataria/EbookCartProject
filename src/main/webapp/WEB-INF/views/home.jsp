@@ -93,7 +93,7 @@
                                 <span class="description"><c:out value="${prod.shortDesc}" /></span>
                             </span>
                         
-                            <a href="#">
+                            <a href="/EbookCart/bookDetail?prod_name=${prod.productName}">
                             <div  class="buy-btn">BUY NOW <span class="price"><span class="low"></span><c:out value="${prod.price}" /></span></div></a>
                     <!--</a>-->
                         </div>

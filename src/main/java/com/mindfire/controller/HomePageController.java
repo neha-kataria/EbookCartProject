@@ -16,8 +16,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -32,21 +36,45 @@ public class HomePageController {
     @Autowired
     private AddProductDAO productDao;
     
-     @RequestMapping(value="/", method=RequestMethod.GET)
-    public String init(Model model){
-      List<ProductBean> list=productDao.list();
-      model.addAttribute("prod_list", list);
-        return "home";
+//     @RequestMapping(value="/", method=RequestMethod.GET)
+//    public String init(Model model){
+//      List<ProductBean> list=productDao.list();
+//      model.addAttribute("prod_list", list);
+//      model.addAttribute("logged_user", "Guest");
+//        return "home";
+//      
+//    }
+    
+     @RequestMapping(value="/buyNow", method=RequestMethod.GET)
+    public String buyNow(Model model,@RequestParam("prod_name") String name){
+      ProductBean ob=productDao.get(name);
+      System.out.println("$$$$$$$$$$$$"+ ob.getProductName());
+      System.out.println("$$$$$$$$$$$$"+ name);
+      model.addAttribute("selected", ob);
+        return "buyNow";
       
     }
     
+//     @RequestMapping(value="/login", method=RequestMethod.GET)
+//    public String login(Model model,@RequestParam("buy") String value){
+//      if(value.equals("0"))
+//        return "login";
+//      else
+//          return "bookDetail";
+//       
+//    }
+     
      @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login(Model model){
-      
+     // if(value.equals("0"))
         return "login";
+    //  else
+      //    return "bookDetail";
        
     }
-     
+    
+    
+    
       @RequestMapping(value="/register", method=RequestMethod.GET)
     public String registerNew(Model model){
       
@@ -115,10 +143,25 @@ public class HomePageController {
       
     }
     
+     @RequestMapping(value="/bookDetail", method=RequestMethod.GET)
+    public String bookDetail(Model model,@RequestParam("prod_name") String name){
+      //  System.out.println("$$$$$$$$$$$$"+ name);
+      ProductBean ob=productDao.get(name);
+      
+      System.out.println("$$$$$$$$$$$$"+ ob.getProductName());
+      System.out.println("$$$$$$$$$$$$"+ name);
+      model.addAttribute("selected", ob);
+        return "bookDetail";
+       
+    }
+    
      @RequestMapping(value="/addToCart", method=RequestMethod.GET)
     public String addToCart(Model model){
-      
-        return "addToCartPage";
+//      ProductBean ob=productDao.get(1);
+//      System.out.println("$$$$$$$$$$$$"+ ob.getProductName());
+//      System.out.println("$$$$$$$$$$$$"+ name);
+//      model.addAttribute("selected", ob);
+        return "addToCart";
        
     }
     
@@ -146,11 +189,15 @@ public class HomePageController {
        
     }
     @RequestMapping(value="/adminProductShowTable", method=RequestMethod.GET)
-    public String adminProductShowTable(Model model){
+    public ModelAndView adminProductShowTable(ModelAndView model){
        List<ProductBean> list=productDao.list();
                   
-      model.addAttribute("catg_list",list);
-        return "adminProductShowTable";
+      //model.addAttribute("catg_list",list);
+     
+      //  return "adminProductShowTable";
+      model.addObject("prod_list");
+      model.setViewName("adminProductShowTable");
+      return model;
        
     }
 }

@@ -10,14 +10,24 @@ package com.mindfire.bean;
  * @author neha
  */
 public class RegisterUserBean {
+    int u_id;
     String username;
     String password;
     String email;
     String contact;
-    int age;
+   // int age;
     String login_type;
     String forgot_token;
     String forgot_link_expire;
+
+    public int getU_id() {
+        return u_id;
+    }
+
+    public void setU_id(int u_id) {
+        this.u_id = u_id;
+    }
+    
 
     public String getUsername() {
         return username;
@@ -51,13 +61,13 @@ public class RegisterUserBean {
         this.contact = Contact;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
 
     public String getLogin_type() {
         return login_type;

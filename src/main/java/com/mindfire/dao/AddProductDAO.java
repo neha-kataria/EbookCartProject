@@ -18,7 +18,7 @@ public interface AddProductDAO {
 	
 	public void delete(int c_id);
 	
-	public ProductBean get(int c_id);
+	public ProductBean get(String p_name);
 	
 	public List<ProductBean> list();
     
