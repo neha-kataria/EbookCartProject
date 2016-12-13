@@ -35,95 +35,6 @@
         <script>
              $(document).ready(prodAjaxCall())
                      
-            function prodAjaxCall() {
-                   $.ajax({
-                    type: "GET",
-                    url: "showProduct",
-                    data: {},
-                    dataType: 'json',
-                    success: function (data)
-                    { //alert(data);
-                         $('#list_table').html("");
-                       $('#list_table').append("<table class='table table-striped jambo_table bulk_action' id='prod_list_table'>"+
-                                            "<thead><tr class='headings'>"+
-                                                    "<th class='column-title'>Id </th>"+
-                                                    "<th class='column-title'>Thumbnail </th>"+
-                                                    "<th class='column-title'>Name </th>"+
-                                                    "<th class='column-title'>Parent Category </th>"+
-                                                    "<th class='column-title'>Short Description </th>"+
-                                                    "<th class='column-title'>Total Quantity </th>"+
-                                                    "<th class='column-title'>Available Quantity </th></tr></thead>");
-                                                  
-                         $.each(data, function (i, item) {
-                             $("#prod_list_table").append("<tr onclick='bookdetail(this);' id='"+item.productName+"'><td>"+item.p_id+"</td><td><img src='assets/product/"+item.thumb_name+"' height='100' width='100'></td><td>"+item.productName+"</td><td>"+item.parentName+"</td><td>"+item.shortDesc+"</td><td>"+item.availQuant+"</td><td>"+item.totalQuant+"</td></tr>");
-                         });
-                      $('#list_table').append("</table>");   
-                     }
-                 });
-            }
-             
-  
-function catgAjaxCall() {
-   // alert($(el));
-                   $.ajax({
-                    type: "GET",
-                    url: "SideMenu",
-                    data: {},
-                    dataType: 'json',
-                    success: function (data)
-                    { //alert(data);
-                        $('#list_table').html("");
-                       $('#list_table').append("<table class='table table-striped jambo_table bulk_action' id='catg_list_table'><thead>"+
-                                                "<tr class='headings'>"+
-                                                    "<th class='column-title'>Id </th>"+
-                                                    "<th class='column-title'>Thumbnail </th>"+
-                                                    "<th class='column-title'>Name </th>"+
-                                                    "<th class='column-title'>Parent Category </th>"+"</tr></thead>");
-                                                    
-                                                    
-
-                       
-                         $.each(data, function (i, item) {
-                            $('#catg_list_table').append("<tr onclick='subcatgAjaxCall(this);' id='"+item.categoryName+"'><td>"+item.c_id+"</td><td><img src='assets/category/"+item.catg_thumb_name+"' height='100' width='100'></td><td>"+item.categoryName+"</td><td>"+item.parentName+"</td></tr>");
-                            });
-                            $('#list_table').append("</table>");
-                    }
-                });
-            }
-                               
-        function subcatgAjaxCall(el) {
-   // alert($(el));
-                   $.ajax({
-                    type: "GET",
-                    url: "SideMenuSubCatg",
-                    data: {'name':$(el).attr('id')},
-                    dataType: 'json',
-                    success: function (data)
-                    {// alert(data);
-                        $('#list_table').html("");
-                       $('#list_table').append("<table class='table table-striped jambo_table bulk_action' id='catg_list_table'><thead>"+
-                                                "<tr class='headings'>"+
-                                                    "<th class='column-title'>Id </th>"+
-                                                    "<th class='column-title'>Thumbnail </th>"+
-                                                    "<th class='column-title'>Name </th>"+
-                                                    "<th class='column-title'>Parent Category </th>"+
-                                                    "<th class='column-title'>Short Description </th>"+
-                                                    "</tr></thead>");
-                                                    
-                                                    
-
-                       
-                         $.each(data, function (i, item) {
-                            $('#catg_list_table').append("<tr><td>"+item.s_id+"</td><td><img src='assets/subcategory/"+item.subCatg_thumb_name+"' height='100' width='100'></td><td>"+item.subcategoryName+"</td><td>"+item.subCatg_parentName+"</td><td>"+item.subCatg_shortDesc+"</td></td></tr>");
-                            });
-                            $('#list_table').append("</table>");
-                    }
-                });
-            }
-                
-             
-             
-             
              
              
         </script>
@@ -288,7 +199,7 @@ function catgAjaxCall() {
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Displaying... <small>Tables</small></h3>
+                    <h3>Displaying... <small></small></h3>
                   </div>
                   <div class="col-md-6">
                    

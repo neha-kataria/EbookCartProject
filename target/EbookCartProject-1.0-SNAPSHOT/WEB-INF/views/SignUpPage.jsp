@@ -48,9 +48,13 @@
                 </div>
               <div class="buttons">
                     <input type="submit" value="Register" />
-                    
+              </div>
+                <br>
+                <div style="margin-left: 40%;font-size: 16px">
+                    <a href='/EbookCart/login?buy=${param.buy}'>Go back to Login</a>
+                    </div>
 
-                </div>
+                <!--</div>-->
                 </form>
             </div>
           

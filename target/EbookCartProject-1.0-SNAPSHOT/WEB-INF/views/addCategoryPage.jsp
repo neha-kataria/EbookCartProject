@@ -24,6 +24,7 @@
         <link href="resources/css/custom.min.css" rel="stylesheet">
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="resources/js/myAdminJSFile.js"></script>
         <script type="text/javascript">
             $(function () {
                 $("#thumbUpload").change(function () {
@@ -299,6 +300,9 @@
                     </div>
                     <!--     new row ------>
                     <br><br>
+                     <div class="table-responsive" style="width:100%" id="list_table">
+
+                      </div>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
@@ -378,63 +382,15 @@
 
 
                 <!-- -->
-
+<!--
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <!-- 
-     <div class="table-responsive">
-                       <table class="table table-striped jambo_table bulk_action">
-                         <thead>
-                           <tr class="headings">
-                             <th>
-                               <input type="checkbox" id="check-all" class="flat">
-                             </th>
-                             <th class="column-title">Id </th>
-                             <th class="column-title">Name </th>
-                             <th class="column-title">Thumbnail </th>
-                             <th class="column-title">Add Category/Product</th>
-                             
-                           </tr>
-                         </thead>
- 
-                         <tbody>
-                           <tr class="even pointer">
-                             <td class="a-center ">
-                               <input type="checkbox" class="flat" name="table_records">
-                             </td>
-                             <td class=" ">121000040</td>
-                             <td class=" ">May 23, 2014 11:47:56 PM </td>
-                             <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                             <td class=" ">John Blank L</td>
-                             
-                           </tr>
-                           <tr class="odd pointer">
-                             <td class="a-center ">
-                               <input type="checkbox" class="flat" name="table_records">
-                             </td>
-                             <td class=" ">121000039</td>
-                             <td class=" ">May 23, 2014 11:30:12 PM</td>
-                             <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                             </td>
-                             <td class=" ">John Blank L</td>
-                             
-                           </tr>
-                          
-                         </tbody>
-                       </table>
-                     </div>
-    -->
+  
 
     <!-- footer content -->
-    <!--      <footer>
-            <div class="pull-right">
-              ebookcart - Bootstrap Admin Template 
-            </div>
-            <div class="clearfix"></div>
-          </footer>
-    <!-- /footer content -->
+
 </div>
 </div>
 
