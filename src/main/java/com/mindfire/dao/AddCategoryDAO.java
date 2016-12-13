@@ -18,9 +18,11 @@ public interface AddCategoryDAO {
 	
 	public void delete(int c_id);
 	
-	public CategoryBean get(int c_id);
+	public CategoryBean get(String name);
 	
 	public List<CategoryBean> list();
+        public List<CategoryBean> catg_list();
+        
 }
     
 

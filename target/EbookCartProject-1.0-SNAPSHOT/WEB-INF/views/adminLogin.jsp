@@ -10,7 +10,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>another login panel</title>
+  <title>admin login panel</title>
   
   
   

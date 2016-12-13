@@ -230,7 +230,7 @@
                             <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
                                 <ul style="list-style: none; padding-left: 33px; float: left; display: inline; ">
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="#" class="active" style="font-weight: bold;text-decoration: underline">Category</a></li>
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/adminSubCategoryShowTable">Sub-Category</a></li>
+                                    <!--<li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/adminSubCategoryShowTable">Sub-Category</a></li>-->
 <!--                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/adminProductShowTable">Product</a></li>-->
 
 
@@ -276,6 +276,7 @@
 
                                     <!--   table code -->             
                                     <!--       <table border="2" style="width: 30%">         -->
+                                    
                                     <div class="table-responsive">
                                         <table class="table table-striped jambo_table bulk_action">
                                             <thead>
@@ -286,28 +287,31 @@
                                                     <th class="column-title">Id </th>
                                                     <th class="column-title">Name </th>
                                                     <th class="column-title">Thumbnail </th>
-                                                    <th class="column-title">Add Category/Product</th>
+                                                    <!--<th class="column-title">Add Category/Product</th>-->
 
                                                 </tr>
                                             </thead>
                                             <c:forEach items="${catg_list}" var="catg">
+                                                
                                                 <tr>
+                                               
                                                     <td><c:out value="${catg.c_id}" /></td>
-                                                    <td><c:out value="${catg.categoryName}" /></td>
+                                                    <td><a href="/EbookCart/adminSubCategoryShowTable?catg_name=<c:out value="${catg.categoryName}" />"  ><c:out value="${catg.categoryName}" /></a></td>
                                                     <td><c:out value="${catg.parentName}" /></td>
                                                    <!-- <td><c:out value="${catg.catg_path}" /></td> -->
                                                     <td><!--<c:out value="assets/category/${catg.catg_thumb_name}" />-->
                                                         <img src="<c:out value="assets/category/${catg.catg_thumb_name}" />" height="100" width="100" ></td>
-                                                    <td ><a href="/EbookCart/adminSubCategoryShowTable">
+<!--                                                    <td ><a href="/EbookCart/adminSubCategoryShowTable">
                                                             <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Sub-category</span></a>
                                                             <br>
                                                             <a href="/EbookCart/adminProductShowTable">
                                                             <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" >Add Product</span></a>
-                                                    </td>
+                                                    </td>-->
 
-
-
+                                                   
+                                                
                                                 </tr>
+                                                 
                                             </c:forEach>
                                         </table>                                    
                                     </div>       

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  *
  * @author neha
+ * bean used to add product in the list
  */
 public class ProductBean {
     String productName;

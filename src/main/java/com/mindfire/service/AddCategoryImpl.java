@@ -59,9 +59,9 @@ public class AddCategoryImpl  implements AddCategoryDAO{
     }
 
     @Override
-    public CategoryBean get(int c_id) {
+    public CategoryBean get(String name) {
        // implementation details goes here...
-                String sql = "SELECT * FROM category WHERE id=" + c_id;
+                String sql = "SELECT * FROM category WHERE name='" + name+"'";
 	return jdbcTemplate.query(sql, new ResultSetExtractor<CategoryBean>() {
 
 		@Override
@@ -87,6 +87,39 @@ public class AddCategoryImpl  implements AddCategoryDAO{
     public List<CategoryBean> list() {
        // implementation details goes here...
                 String sql = "SELECT * FROM category";
+	List<CategoryBean> listCategory = jdbcTemplate.query(sql, new RowMapper<CategoryBean>() {
+
+		@Override
+		public CategoryBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+			CategoryBean aCategory = new CategoryBean();
+
+			aCategory.setC_id(rs.getInt("id"));
+			aCategory.setCategoryName(rs.getString("name"));
+			aCategory.setParentName(rs.getString("parent_category"));
+			aCategory.setCatg_showTitle(rs.getString("display_at"));
+			aCategory.setCatg_path(rs.getString("path"));
+                        aCategory.setCatg_thumb_path(rs.getString("thumb_path"));
+                        aCategory.setCatg_thumb_name(rs.getString("thumb_name"));
+//                        if(aCategory.getCatg_thumb_path().endsWith("//"))
+//                {
+//                    aCategory.setCatg_thumb_name("nothumb");
+//                }
+
+			return aCategory;
+		}
+
+                   
+
+	});
+
+	return listCategory;
+
+    }
+    
+    @Override
+    public List<CategoryBean> catg_list() {
+       // implementation details goes here...
+                String sql = "SELECT * FROM category where id>=1";
 	List<CategoryBean> listCategory = jdbcTemplate.query(sql, new RowMapper<CategoryBean>() {
 
 		@Override

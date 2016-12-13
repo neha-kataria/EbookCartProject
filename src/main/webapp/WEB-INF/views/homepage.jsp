@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homepage
-    Created on : 28 Oct, 2016, 3:46:55 PM
+    Document   : homepagedemo2
+    Created on : 9 Dec, 2016, 9:53:47 AM
     Author     : neha
 --%>
 
@@ -8,379 +8,184 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Homepage</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" href="resources/css/images/favicon.ico" />
-	<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="all" />
-	<script type="text/javascript" src="resources/js/jquery-1.6.2.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.jcarousel.min.js"></script>
-	<!--[if IE 6]>
-		<script type="text/javascript" src="js/png-fix.js"></script>
-	<![endif]-->
-	<script type="text/javascript" src="resources/js/functions.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="resources/css/myhomepage.css" type="text/css" media="all">
+        <link href="resources/css/custom.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <title>JSP Page</title>
+
+        <script>
+            function ajaxcall(el) {
+                //   alert($(el));
+                var catg = $(el).attr('id');
+                catg = catg.replace("_", " ");
+                // alert(catg);
+                $.ajax({
+                    type: "GET",
+                    url: "SelectCatg",
+                    data: {'name': catg},
+                    dataType: 'json',
+                    success: function (data)
+                    { //alert(data.length);
+                        $('#heyo').html("");
+
+
+                        $.each(data, function (i, item) {
+                            
+                            $('#heyo').append("<li style='color:black'><a href='/EbookCart/bookDetail?prod_name=" + item.productName + "&log_buy=0'  ><div class='product' id='insideproduct' >" +
+                                    "<div class='info' id='book_info' >" + "<img src='assets/product/" + item.thumb_name + "' alt='img' >" +
+                                    "<span class='book-name' id='book-name' style='color:black'>" + item.productName + "</span>" +
+                                    "<span class='avail_quant' style='color:blue'>Available quantity:" + item.availQuant + "</span></div></div></a></li>");
+
+                        });
+
+                    }
+                });
+            }
+
+            $(document).ready(function catgAjaxCall() {
+                $.ajax({
+                    type: "GET",
+                    url: "SideMenu",
+                    data: {},
+                    dataType: 'json',
+                    success: function (data)
+                    { 
+                        $.each(data, function (i, item) {
+
+                            var s = item.categoryName;
+                            s = s.replace(" ", "_");
+
+                            $('#side').append("<li ><span><a onclick='ajaxcall(this);' style='color:#0182b5' id=" + item.categoryName + ">" + "<i class='fa fa-align-justify'></i>" + item.categoryName + "</a>" +
+                                    "<a onclick='subcatgAjaxCall(this);' style='color:#0182b5' id=" + item.categoryName + "><span class='fa fa-chevron-down' style='width:3px;height:3px' ></span></a></span>" +
+                                    "<ul id='addhere_" + item.categoryName + "'></ul></li>");
+                          
+
+                        });
+                    }
+                });
+                product();
+
+            })
+
+            function product() {
+                $.ajax({
+                    type: "GET",
+                    url: "ProductListing",
+                    data: {},
+                    dataType: 'json',
+                    success: function (data)
+                    {
+                        $('#heyo').html("");
+                        $.each(data, function (i, item) {
+
+                            $('#heyo').append("<li style='margin-left:5%'><a href='/EbookCart/bookDetail?prod_name=" + item.productName + "&log_buy=0'><div class='product' id='insideproduct' >" +
+                                    "<div class='info' id='book_info' >" + "<img src='assets/product/" + item.thumb_name + "' alt='img' >" +
+                                    "<span class='book-name' id='book-name' style='color:blue; margin-left:10px;'>" + item.productName + "</span>" +
+                                    "<span class='avail_quant' style='color:blue; margin-left:10px;'>Available quantity:" + item.availQuant + "</span>"+
+                                    "<div  class='buy-btn' style='bottom:10px; left:20px;'>Rs <span class='price' style='color: black'><span class='low'></span>"+
+                                    item.price+"</span></div>"+
+                                        "</div></div></a></li>");
+
+                        });
+                    }
+                });
+
+            }
+
+
+
+
+            function subcatgAjaxCall(el) {
+
+                $.ajax({
+                    type: "GET",
+                    url: "SideMenuSubCatg",
+                    data: {'name': $(el).attr('id')},
+                    dataType: 'json',
+                    success: function (data)
+                    { //alert(data);
+                        var s = "#addhere_" + $(el).attr('id');
+                        $(s).html("");
+
+                        $.each(data, function (i, item) {
+                            var s2 = item.subcategoryName;
+                            s2 = s2.replace(" ", "_");
+
+
+                            $(s).append("<li style='margin-left:15%;' ><a onclick='ajaxcall(this);' style='color:#0182b5' id=" + s2 + ">" + item.subcategoryName + "</a></li>");
+
+                        });
+                    }
+                });
+            }
+
+        </script>
     </head>
     <body>
-       <div id="header" class="shell">
-           <!--<div id="logo"><h1><a href="#" style=""></a></h1>BookCart<span><a href="#">place to find your ebooks</a></span></div>
-		-->
-           <!--     <div ><img src="resources/images/ebookcart.png" style="width: 100px;height: 80px; display: block;float: left;" /><h1>ebookCart</h1>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pick your ebook today!</span></div>-->
-           <div ><img src="resources/images/shoppingcartblue.jpg" style="width: 100px;height: 80px; display: block;float: left;object-fit: cover;" /><h1 style="color: #0182b5;">ebookCart</h1>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pick your ebook today!</span></div>
-                <!-- Navigation -->
-		<div id="navigation">
-			<ul>
-				<li><a href="#" class="active">Home</a></li>
-				<li><a href="/EbookCart/login">LogIn/Register</a></li>
-				<li><a href="#">Offers</a></li>
-				
-				<li><a href="#About">About Us</a></li>
-                    <li><a href="#Contacts">Contacts</a></li>
-			</ul>
-		</div>
-		<!-- End Navigation -->
-		<div class="cl">&nbsp;</div>
-		<!-- Login-details -->
-		<div id="login-details">
-			<p>Welcome, <a href="#" id="user">Guest</a> .</p><p><a href="#" class="cart" ><img src="resources/images/shoppingcart.jpg" alt="" /></a>Shopping Cart (0) <a href="#" class="sum">$0.00</a></p>
-		</div>
-		<!-- End Login-details -->
-	</div>
-	<!-- End Header -->
-	<!-- Slider -->
-	<div id="slider">
-		<div class="shell">
-			<ul>
-				<li>
-					<div class="image">
-						<img src="resources/images/books.png" alt="" />
-					</div>
-					<div class="details">
-						<h2>ebookCart</h2>
-						<h3>Special Offers</h3>
-						<p class="title">BOOKs</p>
-						<p class="description">free bookssssssssssss</p>
-						<a href="#" class="read-more-btn">Read More</a>
-					</div>
-				</li>
-				<li>
-					<div class="image">
-						<img src="resources/images/books.png" alt="" />
-					</div>
-					<div class="details">
-						<h2>ebookCart</h2>
-						<h3>Special Offers</h3>
-						<p class="title">title2</p>
-						<p class="description">hey its the second tab</p>
-						<a href="#" class="read-more-btn">Read More</a>
-					</div>
-				</li>
-				<li>
-					<div class="image">
-						<img src="resources/images/books.png" alt="" />
-					</div>
-					<div class="details">
-						<h2>ebookCart</h2>
-						<h3>Special Offers</h3>
-						<p class="title">title3</p>
-						<p class="description">here is the thrd tab</p>
-						<a href="#" class="read-more-btn">Read More</a>
-					</div>
-				</li>
-				<li>
-					<div class="image">
-						<img src="resources/images/books.png" alt="" />
-					</div>
-					<div class="details">
-						<h2>ebookCart</h2>
-						<h3>Special Offers</h3>
-						<p class="title">title 4</p>
-						<p class="description">desc here for fourth</p>
-						<a href="#" class="read-more-btn">Read More</a>
-					</div>
-				</li>
-			</ul>
-			<div class="nav">
-				<a href="#">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-			</div>
-		</div>
-	</div>
-	<!-- End Slider -->
-	<!-- Main -->
-	<div id="main" class="shell">
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<ul class="categories">
-				<li>
-					<h4>Categories</h4>
-					<ul>
-						<li><a href="#">Fiction</a></li>
-						<li><a href="#">Non-Fiction</a></li>
-						<li><a href="#">Romance novel</a></li>
-						<li><a href="#">Thriller</a></li>
-						<li><a href="#">Horror</a></li>
-						<li><a href="#">Tragedy</a></li>
-						<li><a href="#">Satire</a></li>
-                                                <li><a href="#">Classic</a></li>
-                                                <li><a href="#">Mystery</a></li>
-                                                <li><a href="#">Fable</a></li>
-                                                <li><a href="#">Science Fiction</a></li>
-                                                <li><a href="#">Biography</a></li>
-                                                <li><a href="#">Autobiography</a></li>
-					</ul>
-				</li>
-				<li>
-					<h4>Educational Books</h4>
-					<ul>
-						<li><a href="#">Science</a></li>
-						<li><a href="#">Social Science</a></li>
-						<li><a href="#">Economics</a></li>
-						<li><a href="#">Mathematics</a></li>
-						<li><a href="#">Hindi</a></li>
-						<li><a href="#">Sanskrit</a></li>
-						<li><a href="#">MBA</a></li>
-						<li><a href="#">Computers</a></li>
-						<li><a href="#">English</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<!-- End Sidebar -->
-		<!-- Content -->
-		<div id="content">
-			<!-- Products -->
-			<div class="products">
-				<h3>Featured Products</h3>
-				<ul>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image01.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image02.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image03.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image04.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image05.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image06.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image07.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#" class="info">
-								<span class="holder">
-									<img src="resources/images/image08.jpg" alt="" />
-									<span class="book-name">Book Name</span>
-									<span class="author">by John Smith</span>
-									<span class="description">Maecenas vehicula ante eu enim pharetra<br />scelerisque dignissim <br />sollicitudin nisi</span>
-								</span>
-							</a>
-							<a href="#" class="buy-btn">BUY NOW <span class="price"><span class="low">$</span>22<span class="high">00</span></span></a>
-						</div>
-					</li>
-				</ul>
-			<!-- End Products -->
-			</div>
-			<div class="cl">&nbsp;</div>
-			<!-- Best-sellers -->
-			<div id="best-sellers">
-				<h3>Best Sellers</h3>
-				<ul>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best01.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>35<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best02.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>45<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best03.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>15<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best04.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>27<span class="high">99</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best01.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>35<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="css/images/image-best02.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>45<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best03.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>15<span class="high">00</span></span>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div class="product">
-							<a href="#">
-								<img src="resources/images/image-best04.jpg" alt="" />
-								<span class="book-name">Book Name </span>
-								<span class="author">by John Smith</span>
-								<span class="price"><span class="low">$</span>27<span class="high">99</span></span>
-							</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<!-- End Best-sellers -->
-		</div>
-		<!-- End Content -->
-		<div class="cl">&nbsp;</div>
-	</div>
-	<!-- End Main -->
-	<!-- Footer -->
-	<div id="footer" class="shell">
-		<div class="top">
-			<div class="cnt">
-				<div class="col about">
-                                    <h4 id="About">About BestSellers</h4>
-					<p>Nulla porttitor pretium mattis. Mauris lorem massa, ultricies non mattis bibendum, semper ut erat. Morbi vulputate placerat ligula. Fusce <br />convallis, nisl a pellentesque viverra, ipsum leo sodales sapien, vitae egestas dolor nisl eu tortor. Etiam ut elit vitae nisl tempor tincidunt. Nunc sed elementum est. Phasellus sodales viverra mauris nec dictum. Fusce a leo libero. Cras accumsan enim nec massa semper eu hendrerit nisl faucibus. Sed lectus ligula, consequat eget bibendum eu, consequat nec nisl. In sed consequat elit. Praesent nec iaculis sapien. <br />Curabitur gravida pretium tincidunt.  </p>
-				</div>
-				
-				<div class="col" id="newsletter">
-				
-                                    <h4 id="Contacts">Contacts</h4>
-                                <p><ul>
-						<li><a href="#">ebookcart@gmail.com</a></li>
-						<li><a href="#">022-26549870</a></li>
-						<li><a href="#">011-26549876</a></li>
-                                </ul></p>
-				</div>
-				<div class="cl">&nbsp;</div>
-				<div class="copy">
-				<!--	<p>&copy; <a href="#">BestSeller.com</a>. Design by <a href="http://css-free-templates.com/">CSS-FREE-TEMPLATES.COM</a></p>
-				--></div> 
-			</div>
-		</div>
-	</div>
-	<!-- End Footer -->
+        <%@include file="header.jsp" %>
+        <!-- main body -->
+        <div style="background-image: url(resources/images/shell.png);width: 881px;height:1200px ; margin: 0 auto;padding: 0 50px 0 60px; position: relative;">
+            <!-- Sidebar -->
+         
 
+            <div id="sidebar" style="font-size: 16px; line-height: 24px;">
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section"  >
+                        <!--<h3 style="color: #015faa">Category</h3>-->
+
+
+                        <!--<h3>Categories</h3><hr>-->  
+                        <h5 style="color: #0182b5; margin-top: 45%; line-height: 26px;font-size: 18px;" >   
+                            <i class="fa fa-edit" style="color: #0066cc; "></i><a onclick="catgAjaxCall();">Categories</a> <span class="fa "></span></h5>
+
+                        <div >
+                            <ul class="nav side-menu" id="side">
+                                <li>
+                                    <div id="child"></div>
+                                </li>
+
+                            </ul>
+
+
+
+
+
+
+                        </div>
+
+
+
+                    </div></div>
+              
+            </div>
+            <!-- End Sidebar -->
+
+
+
+            <!--<input type="button" value="click here" onclick="ajaxcall();" >-->
+            <br>
+            <!--<div id="itemslist">-->
+            <div id="content">
+                <div class="products" >
+                    <div style="color:red">${exception}</div>
+                    <h3>Featured Products</h3>
+                    <br>
+                    <div>
+                        <ul id="heyo" style="color: white;font-size: 20px; "> 
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- main body end tag -->
+        <div>
+            <%@include file="footer.jsp" %>
+        </div>
     </body>
 </html>

@@ -8,6 +8,7 @@ package com.mindfire.bean;
 /**
  *
  * @author neha
+ * bean used to manage data from the signup page
  */
 public class RegisterUserBean {
     int u_id;

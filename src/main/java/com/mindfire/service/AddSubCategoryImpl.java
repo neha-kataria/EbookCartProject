@@ -59,8 +59,8 @@ public class AddSubCategoryImpl implements AddSubCategoryDAO {
     }
 
     @Override
-    public SubCategoryBean get(int s_id) {
-          String sql = "SELECT * FROM sub_category WHERE id=" + s_id;
+    public SubCategoryBean get(String name) {
+          String sql = "SELECT * FROM sub_category WHERE parent_category='" + name+"'";
 	return jdbcTemplate.query(sql, new ResultSetExtractor<SubCategoryBean>() {
 
 		@Override
@@ -87,9 +87,9 @@ public class AddSubCategoryImpl implements AddSubCategoryDAO {
     }
 
     @Override
-    public List<SubCategoryBean> list() {
+    public List<SubCategoryBean> list(String name) {
         
-          String sql = "SELECT * FROM sub_category";
+          String sql = "SELECT * FROM sub_category where parent_category='"+name+"'";
 	List<SubCategoryBean> listCategory = jdbcTemplate.query(sql, new RowMapper<SubCategoryBean>() {
 
 		@Override

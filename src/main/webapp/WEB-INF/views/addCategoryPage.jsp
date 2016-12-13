@@ -35,7 +35,7 @@
 
         <script type="text/javascript">
             function readURL(input) {
-                alert(input);
+                //alert(input);
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
@@ -66,7 +66,7 @@
             }
         </script>
 
-        <title>JSP Page</title>
+        <title>Add Category</title>
     </head>
     <body class="nav-md">
         <div class="container body">
@@ -111,79 +111,33 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a><i class="fa fa-edit"></i>Category <span class="fa fa-chevron-down"></span></a>
+                                        <a><i class="fa fa-edit"></i>Add items <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="/EbookCart/addCategory">Add Category</a></li>
-                                            <li><a href="/EbookCart/adminCategoryShowTable">Show Category</a></li>
-                                            <li><a href="editCategoryPage.html">Edit Category</a></li>
+                                            <li><a href="/EbookCart/addSubCategory">Add Sub-Category</a></li>
+                                            <li><a href="/EbookCart/addProduct">Add Product</a></li>
+                                            
+                                          
 
                                         </ul>
                                     </li>
 
-                                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                    <li><a><i class="fa fa-table"></i> Show Tables <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="tables.html">Registered Users Table</a></li>
-                                            <li><a href="/EbookCart/adminProductShowTable">Product Table</a></li>
+                                            <li><a onclick="userAjaxCall();">Registered Users Table</a></li>
+                                            <li><a onclick="catgAjaxCall();">Show Category</a></li>
+                                            <li><a onclick="prodAjaxCall();">Product Table</a></li>
+                                            <li><a onclick="addToCartAjaxCall();">Show AddToCart Table</a></li>
                                         </ul>
                                     </li>
-<!--                                    <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="chartjs.html">Chart JS</a></li>
-                                            <li><a href="chartjs2.html">Chart JS2</a></li>
-                                            <li><a href="morisjs.html">Moris JS</a></li>
-                                            <li><a href="echarts.html">ECharts</a></li>
-                                            <li><a href="other_charts.html">Other Charts</a></li>
-                                        </ul>
-                                    </li>-->
+
 
                                 </ul>
-                            </div>
-                            <div class="menu_section">
-                                <h3>Live On</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="e_commerce.html">E-commerce</a></li>
-                                            <li><a href="projects.html">Projects</a></li>
-                                            <li><a href="project_detail.html">Project Detail</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                            <li><a href="profile.html">Profile</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="page_403.html">403 Error</a></li>
-                                            <li><a href="page_404.html">404 Error</a></li>
-                                            <li><a href="page_500.html">500 Error</a></li>
-                                            <li><a href="plain_page.html">Plain Page</a></li>
-                                            <li><a href="login.html">Login Page</a></li>
-                                            <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="#level1_1">Level One</a>
-                                            <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                                                <ul class="nav child_menu">
-                                                    <li class="sub_menu"><a href="level2.html">Level Two</a>
-                                                    </li>
-                                                    <li><a href="#level2_1">Level Two</a>
-                                                    </li>
-                                                    <li><a href="#level2_2">Level Two</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#level1_2">Level One</a>
-                                            </li>
-                                        </ul>
-                                    </li>                  
-                                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>
-                                            Offers Page <span class="label label-success pull-right">Coming Soon</span></a></li>
-                                </ul>
-                            </div>
+              </div>
+             
 
-                        </div>
-                        <!-- /sidebar menu -->
+            </div>
+            <!-- /sidebar menu -->
 
 
                     </div>
@@ -229,8 +183,8 @@
                             <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
                                 <ul style="list-style: none; padding-left: 33px; float: left; display: inline; ">
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="#" class="active" style="font-weight: bold;text-decoration: underline">Category</a></li>
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addSubCategory">Sub-Category</a></li>
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addProduct">Product</a></li>
+<!--                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addSubCategory">Sub-Category</a></li>
+                                <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addProduct">Product</a></li>-->
 
 
                                 </ul>
@@ -243,22 +197,17 @@
                         </div>
 
                         <div class="title_right">
-                            <!--  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="Search for...">
-                                  <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                  </span>
-                                </div>
-                              </div>-->
+                          
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="row">
+                        
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Add Category <small>different form elements</small></h2>
+                                    <div style="color: red;margin-left: 20%;">${error_msg}</div>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -328,12 +277,7 @@
                                             </div>
 
                                         </div>
-                                        <!--     <input style="display:none" type="file" id="fileupload1" />
-     <input type="button"  id="btnUpload" onclick='$("#fileupload1").click()' value="Upload"/>
-                                             
-                                            
-                                         <input type='file' onchange="readURL(this);" />
-         <img id="blah" src="#" alt="your image" /> -->
+                                     
                                 </div>
 
                             </div>
@@ -342,7 +286,7 @@
                         <div class="clear"></div>
 
 
-                        </li>
+                        <!--</li>-->
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -419,36 +363,7 @@
 
 
                                     <br />
-                                    <!--               <table border="1" style="margin-left: 20%;width: 50%;font-size: 24px;">
-                                                       <th>Category Icon</th>
-                                                       <th>Category Name</th>
-                                                       <th>Add Product/Sub-Category
-                                                       </th>
-                                                       <tr>
-                                                           <td><img src="resources/images/gandhi.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Biography</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-                                                       <tr>
-                                                           <td><img src="resources/images/harrypotter.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Novels</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-                                                       <tr>
-                                                           <td><img src="resources/images/journal.jpg" style="width: 100px; height: 100px;"></td>
-                                                           <td>Journals</td>
-                                                           <td >
-                                                               <span style="margin-left: 20%" class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                                                           </td>
-                                                       </tr>
-               
-               
-                                                   </table>
-                                    -->
+                                   
                                 </div>
                             </div>
 

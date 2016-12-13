@@ -4,32 +4,31 @@
     Author     : neha
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add To Cart</title>
         <style>
 
             #container {
                 width: 100%;
-                /*background-color: #ffcc33;*/
+           
                 margin: auto;
                 height: auto;
             }
             #first {
                 width: 50%;
                 float: left;
-                /*height: 300px;*/
-                /*background-color: blue;*/
+               
             }
             #second {
                 width: 50%;
                 float: left;
 
-                /*height: 300px;*/
-                /*background-color: green;*/
+              
             }
             #clear {
                 clear: both;
@@ -42,52 +41,37 @@
 
         <%@include file="header.jsp" %>
 
-        <div class="shell">
+        <div class="shell" style="height:600px">
             <hr style="width: 100%">
             <h2 style="color: black">In Your Cart</h2>
-
-
-            <div id="container">
-                <div id="first">
-                    <div class="products">
-            <h3>Featured Products</h3>
-            <ul>
-                <c:forEach items="${prod_list}" var="prod">
-                <li>
-                    <div class="product">
-                        <!--<a href="#" class="info">-->
-                        <div class="info">
-                            <span class="holder" >
-                                <img src="<c:out value="assets/product/${prod.thumb_name}" />" alt="" />
-                                <span class="book-name"><c:out value="${prod.productName}" /></span>
-                                <span class="author">Available quantity : <c:out value="${prod.availQuant}" /></span>
-                                <span class="description"><c:out value="${prod.shortDesc}" /></span>
-                            </span>
-                        
-                            <a href="/EbookCart/bookDetail?prod_name=${prod.productName}">
-                            <div  class="buy-btn">BUY NOW <span class="price"><span class="low"></span><c:out value="${prod.price}" /></span></div></a>
-                    <!--</a>-->
-                        </div>
-                    </div>
-                </li>
-     </c:forEach>
-            </ul>
-            <!-- End Products -->
-        </div>
-                </div>
-                <div id="second" >
-                    <input type="button" value="Buy Now" style="background-color: whitesmoke; width: 50%;height: 50px; font-size: 20px; margin-left: 20%">
-                    <input type="button" value="Login To Buy" style="background-color: whitesmoke; width: 50%;height: 50px; font-size: 20px; margin-left: 20%; margin-top: 10%">
-                    <input type="button" value="Add To Cart" style="background-color: whitesmoke; width: 50%;height: 50px; font-size: 20px; margin-left: 20%; margin-top: 10%">
-                </div>
-
-                <div id="clear"></div>
+            
+            <br><br>
+            <div>
+                <table border="2" style="width: 100%;">
+                    <thead>
+                    <th>Product Name</th><th>Quantity</th>
+                    </thead>
+                    <c:forEach items="${addtocartlist}" var="atclist">
+                    <tr><td>
+                            <c:out value="${atclist.product_id}" />
+                        </td>
+                        <td>
+                           <c:out value="${atclist.quantity}" />
+                        </td>
+                    </tr>
+                    </c:forEach>
+                </table>
             </div>
 
 
-
+           <br><br>
+           <div>
+               <input type="button" value="Checkout" onclick="window.location.href='/EbookCart/checkout'">
+           </div>
         </div>  <!-- shell tag ending -->
-        <%@include file="footer.jsp" %>
+       <div style="margin-left: -6.5%">
+            <%@include file="footer.jsp" %></div>
+
 
     </body>
 </html>

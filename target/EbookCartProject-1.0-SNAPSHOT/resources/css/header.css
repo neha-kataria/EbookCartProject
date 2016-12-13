@@ -11,7 +11,7 @@ and open the template in the editor.
 * { margin: 0; padding: 0; outline: 0; }
 
 body {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     font-family:  arial, sans-serif;
     color: #383838;
@@ -48,7 +48,7 @@ h4 { font-family: 'Georgia', Arial, serif; font-style: italic; font-size: 16px; 
     
 }
 #site_logo h1{
-    color: #0182b5; margin-left: 35%; 
+    color: #0182b5; margin-left: 40%; margin-top: 1%;
 }
 
 #login-details { position: absolute; right: 60px; top: 16px; font-size: 12px; line-height: 16px; color: #707070; }

@@ -8,10 +8,12 @@ package com.mindfire.config;
 import com.mindfire.dao.AddCategoryDAO;
 import com.mindfire.dao.AddProductDAO;
 import com.mindfire.dao.AddSubCategoryDAO;
+import com.mindfire.dao.AddToCartDAO;
 import com.mindfire.dao.AddUserDAO;
 import com.mindfire.service.AddCategoryImpl;
 import com.mindfire.service.AddProductImpl;
 import com.mindfire.service.AddSubCategoryImpl;
+import com.mindfire.service.AddToCartImpl;
 import com.mindfire.service.AddUserImpl;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
@@ -87,6 +89,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public AddUserDAO getUserDAO() {
         return new AddUserImpl(getDataSource());
+    }
+    
+    @Bean
+    public AddToCartDAO getAddToCartDAO() {
+        return new AddToCartImpl(getDataSource());
     }
 
 }

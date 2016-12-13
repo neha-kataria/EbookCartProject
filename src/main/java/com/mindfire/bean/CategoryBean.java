@@ -5,12 +5,12 @@
  */
 package com.mindfire.bean;
 
-import org.apache.commons.fileupload.MultipartStream;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author neha
+ * bean used to add category
  */
 public class CategoryBean {
 

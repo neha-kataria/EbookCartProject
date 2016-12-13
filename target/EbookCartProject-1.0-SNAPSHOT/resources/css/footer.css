@@ -25,11 +25,11 @@ h2 { font-family: 'Georgia', Arial, serif; font-style: italic; font-size: 65px; 
 h3 { font-family: 'Georgia', Arial, serif; font-style: italic; font-size: 22px; line-height: 24px; color: #0182b5; }
 h4 { font-family: 'Georgia', Arial, serif; font-style: italic; font-size: 16px; line-height: 17px; color: #0871b3; font-weight: normal; }
 
-.shell { width: 884px; margin: 0 auto; background: url(../images/shell.png) repeat-y 0 0; padding: 0 57px 0 57px; position: relative; }
+.shell { width: 884px; margin: 0 auto; background: url(../images/shell.png) repeat 0 0; padding: 0 57px 0 57px; position: relative; }
 
-#footer { width: 998px; padding: 0; color: #c7e6f2; background: url(../images/footer.png) repeat-y 0 0; }
-#footer .top { background: url(../images/footer-top.png) no-repeat 0 0; padding: 0 43px 0 39px; width: 916px; }
-#footer .cnt { background: #44acd5 url(../images/footer-bg.png) repeat-x 0 0; padding: 21px 44px 0 36px; width: 837px; overflow: hidden;}
+#footer { width: 884px; padding: 0; color: #c7e6f2; background: url(../images/footer.png) repeat-y 0 0; }
+#footer .top { background: url(../images/footer-top.png) no-repeat 0 0; padding: 0 43px 0 39px; width: 850px; }
+#footer .cnt { background: #44acd5 url(../images/footer-bg.png) repeat-x 0 0; padding: 21px 44px 0 36px; width: 850px; overflow: hidden;}
 #footer h4 { font-size: 16px; line-height: 18px; color: #fff; border-bottom: solid 4px #57b4d9; margin-bottom: 3px; padding-bottom: 6px; }
 #footer .copy { color: #78b8d2; background: #3d9abf; font-size: 12px; line-height: 16px; padding: 7px 34px 8px; position: relative; width: 848px; margin: 20px 0 2px -36px; }
 #footer .copy a { color: #78b8d2; }

@@ -8,11 +8,22 @@ package com.mindfire.bean;
 /**
  *
  * @author neha
+ * bean used to manage the login page data
  */
 public class LoginBean {
 
     String username;
     String password;
+    String buy; // to check from where the request is from- bu now page or header login
+
+    public String getBuy() {
+        return buy;
+    }
+
+    public void setBuy(String buy) {
+        this.buy = buy;
+    }
+    
      public LoginBean(){
         
        

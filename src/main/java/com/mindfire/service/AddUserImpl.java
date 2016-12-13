@@ -97,7 +97,7 @@ public class AddUserImpl implements AddUserDAO {
                 aUser.setPassword(rs.getString("password"));
                 aUser.setContact(rs.getString("phone"));
                 aUser.setEmail(rs.getString("email"));
-                aUser.setLogin_type("login_type");
+                aUser.setLogin_type(rs.getString("login_type"));
 
                 return aUser;
             }

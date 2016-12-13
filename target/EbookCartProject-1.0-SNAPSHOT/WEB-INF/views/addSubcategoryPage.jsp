@@ -23,33 +23,33 @@
         <link href="resources/css/custom.min.css" rel="stylesheet">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
         <script type="text/javascript">
-            
-$(function () {
-$("#subCatg_thumbUpload").change(function () {
-$("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUpload").val().lastIndexOf('\\') + 1));
 
-});
-});
-</script>
+            $(function () {
+                $("#subCatg_thumbUpload").change(function () {
+                    $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUpload").val().lastIndexOf('\\') + 1));
 
-<script type="text/javascript">
-                                   function readURL(input) {
-                                       alert(input);
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+                });
+            });
+        </script>
 
-            reader.onload = function (e) {
-                $('#preview')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
+        <script type="text/javascript">
+            function readURL(input) {
+                // alert(input);
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }    
-    </script>
-        <title>JSP Page</title>
+                    reader.onload = function (e) {
+                        $('#preview')
+                                .attr('src', e.target.result)
+                                .width(150)
+                                .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+        <title>Add SubCategory</title>
     </head>
     <body class="nav-md">
         <div class="container body">
@@ -94,76 +94,30 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                                         </ul>
                                     </li>
                                     <li>
-                                        <a><i class="fa fa-edit"></i>Category <span class="fa fa-chevron-down"></span></a>
+                                        <a><i class="fa fa-edit"></i>Add items <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="/EbookCart/addCategory">Add Category</a></li>
-                                            <li><a href="showCategoryPage.jsp">Show Category</a></li>
-                                            <li><a href="editCategoryPage.html">Edit Category</a></li>
+                                            <li><a href="/EbookCart/addSubCategory">Add Sub-Category</a></li>
+                                            <li><a href="/EbookCart/addProduct">Add Product</a></li>
+
+
 
                                         </ul>
                                     </li>
 
-                                    <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                    <li><a><i class="fa fa-table"></i> Show Tables <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="tables.html">Registered Users Table</a></li>
-                                            <li><a href="tables_dynamic.html">Product Table</a></li>
+                                            <li><a onclick="userAjaxCall();">Registered Users Table</a></li>
+                                            <li><a onclick="catgAjaxCall();">Show Category</a></li>
+                                            <li><a onclick="prodAjaxCall();">Product Table</a></li>
+                                            <li><a onclick="addToCartAjaxCall();">Show AddToCart Table</a></li>
                                         </ul>
                                     </li>
-                                    <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="chartjs.html">Chart JS</a></li>
-                                            <li><a href="chartjs2.html">Chart JS2</a></li>
-                                            <li><a href="morisjs.html">Moris JS</a></li>
-                                            <li><a href="echarts.html">ECharts</a></li>
-                                            <li><a href="other_charts.html">Other Charts</a></li>
-                                        </ul>
-                                    </li>
+
 
                                 </ul>
                             </div>
-                            <div class="menu_section">
-                                <h3>Live On</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="e_commerce.html">E-commerce</a></li>
-                                            <li><a href="projects.html">Projects</a></li>
-                                            <li><a href="project_detail.html">Project Detail</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                            <li><a href="profile.html">Profile</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="page_403.html">403 Error</a></li>
-                                            <li><a href="page_404.html">404 Error</a></li>
-                                            <li><a href="page_500.html">500 Error</a></li>
-                                            <li><a href="plain_page.html">Plain Page</a></li>
-                                            <li><a href="login.html">Login Page</a></li>
-                                            <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="#level1_1">Level One</a>
-                                            <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                                                <ul class="nav child_menu">
-                                                    <li class="sub_menu"><a href="level2.html">Level Two</a>
-                                                    </li>
-                                                    <li><a href="#level2_1">Level Two</a>
-                                                    </li>
-                                                    <li><a href="#level2_2">Level Two</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#level1_2">Level One</a>
-                                            </li>
-                                        </ul>
-                                    </li>                  
-                                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>
-                                            Offers Page <span class="label label-success pull-right">Coming Soon</span></a></li>
-                                </ul>
-                            </div>
+
 
                         </div>
                         <!-- /sidebar menu -->
@@ -212,9 +166,16 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                             <br>
                             <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
                                 <ul style="list-style: none; padding-left: 33px; float: left; display: inline; ">
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addCategory" class="active" >Category</a></li>
+
+                                    <% String catg = (String) request.getParameter("category");
+                                        System.out.println("inside jsp>>" + catg);
+                                        if (catg != null) {%>
+
+
+                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;">Category</li>
+                                        <% }%>
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="#" style="font-weight: bold;text-decoration: underline">Sub-Category</a></li>
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addProduct">Product</a></li>
+                                    <!--<li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addProduct">Product</a></li>-->
 
 
                                 </ul>
@@ -224,6 +185,7 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
 
                             <div class="clearfix"></div>
                             <div class="row">
+                                <div style="color: red; margin-left: 20%;">${error_msg}</div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
@@ -232,7 +194,7 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                                 </li>
                                                 <li class="dropdown">
-                                                   <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                                     --><ul class="dropdown-menu" role="menu">
                                                         <li><a href="#">Settings 1</a>
                                                         </li>
@@ -260,7 +222,7 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="parent-name">Parent Category <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="parent-name" name="subCatg_parentName" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="parent-name" name="subCatg_parentName" required="required" value="${param.category}" class="form-control col-md-7 col-xs-12">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -288,16 +250,16 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                                                     <div class="bs-glyphicons">
                                                         <ul class="bs-glyphicons-list">
                                                             <li ><input type="file" name="subCatg_thumbUpload" id="subCatg_thumbUpload" style="display: none" onchange="readURL(this);">
-                                                        <div onclick='$("#subCatg_thumbUpload").click()' >
-                                                            <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
-                                                            <span class="glyphicon-class" ><br>  Click to <br> upload</span>
-                                                        </div>
-                                                       
-                                                    </li>
-                                                    
-                                                </ul>
-                                                <div style="margin-left: 20%">  <span id="spnName"></span> </div>
-                                                <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
+                                                                <div onclick='$("#subCatg_thumbUpload").click()' >
+                                                                    <span class="glyphicon glyphicon-camera" aria-hidden="true"  ></span>
+                                                                    <span class="glyphicon-class" ><br>  Click to <br> upload</span>
+                                                                </div>
+
+                                                            </li>
+
+                                                        </ul>
+                                                        <div style="margin-left: 20%">  <span id="spnName"></span> </div>
+                                                        <img id="preview" src="#" alt="your image" style="margin-left: 20%" />
                                                     </div>
                                                 </div>
                                                 <div class="ln_solid"></div>
@@ -313,20 +275,11 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                                     </div>
                                 </div>
                             </div>
-                            
 
 
 
-                            <!-- /page content -->
 
-                            <!-- footer content -->
-                            <!--      <footer>
-                                    <div class="pull-right">
-                                      ebookcart - Bootstrap Admin Template 
-                                    </div>
-                                    <div class="clearfix"></div>
-                                  </footer>
-                            <!-- /footer content -->
+
                         </div>
                     </div>
 
@@ -373,14 +326,14 @@ $("#spnName").html($("#subCatg_thumbUpload").val().substring($("#subCatg_thumbUp
                     <!-- Custom Theme Scripts -->
                     <script src="resources/js/custom.min.js"></script>
                     <script>
-                        $(document).ready(function () {
-                            $('#birthday').daterangepicker({
-                                singleDatePicker: true,
-                                calender_style: "picker_4"
-                            }, function (start, end, label) {
-                                console.log(start.toISOString(), end.toISOString(), label);
-                            });
-                        });
+                                                                    $(document).ready(function () {
+                                                                        $('#birthday').daterangepicker({
+                                                                            singleDatePicker: true,
+                                                                            calender_style: "picker_4"
+                                                                        }, function (start, end, label) {
+                                                                            console.log(start.toISOString(), end.toISOString(), label);
+                                                                        });
+                                                                    });
                     </script>
                     <!-- /bootstrap-daterangepicker -->
 

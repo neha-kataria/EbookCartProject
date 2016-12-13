@@ -21,5 +21,7 @@ public interface AddProductDAO {
 	public ProductBean get(String p_name);
 	
 	public List<ProductBean> list();
+     //   public List<ProductBean> list(String name);
+         public List<ProductBean> prod_list(String name);
     
 }

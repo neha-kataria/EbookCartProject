@@ -229,7 +229,7 @@
                             <br>
                             <div style="float: left; display: inline; font-family: 'Georgia', Arial, serif; font-size: 16px; line-height: 20px; margin-left: auto; margin-top: auto;">
                                 <ul style="list-style: none; padding-left: 33px; float: left; display: inline; ">
-                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/adminCategoryShowTable"  >Category</a></li>
+                                    <!--<li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/adminCategoryShowTable"  >Category</a></li>-->
                                     <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="#" class="active" style="font-weight: bold;text-decoration: underline">Sub-Category</a></li>
 <!--                                    <li style="list-style: none; padding-left: 33px; float: left; display: inline;"><a href="/EbookCart/addProduct">Product</a></li>-->
 
@@ -290,7 +290,7 @@
 
                                                 </tr>
                                             </thead>
-                                            <c:forEach items="${catg_list}" var="catg">
+                                            <c:forEach items="${catg_sub}" var="catg">
                                                 <tr>
                                                     <td><c:out value="${catg.s_id}" /></td>
                                                     <td><c:out value="${catg.subcategoryName}" /></td>

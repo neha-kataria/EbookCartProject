@@ -18,9 +18,9 @@ public interface AddSubCategoryDAO {
 	
 	public void delete(int c_id);
 	
-	public SubCategoryBean get(int c_id);
+	public SubCategoryBean get(String name);
 	
-	public List<SubCategoryBean> list();
+	public List<SubCategoryBean> list(String name);
     
     
 }

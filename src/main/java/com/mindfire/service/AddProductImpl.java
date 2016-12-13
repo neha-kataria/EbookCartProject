@@ -123,7 +123,37 @@ public class AddProductImpl implements AddProductDAO{
 
     }
 
-    
+    @Override
+     public List<ProductBean> prod_list(String name) {
+       // implementation details goes here...
+                String sql = "SELECT * FROM product where sub_catg_name='"+name+"' OR parent_name='"+name+"'" ;
+	List<ProductBean> listCategory = jdbcTemplate.query(sql, new RowMapper<ProductBean>() {
+
+		@Override
+		public ProductBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+			ProductBean product = new ProductBean();
+				product.setP_id(rs.getInt("id"));
+				product.setProductName(rs.getString("name"));
+                                product.setSubCategoryName(rs.getString("sub_catg_name"));
+				product.setParentName(rs.getString("parent_name"));
+				product.setTotalQuant(rs.getInt("total_quantity"));
+				product.setAvailQuant(rs.getInt("avail_quantity"));
+                                product.setShortDesc(rs.getString("short_desc"));
+                                product.setLongDesc(rs.getString("long_desc"));
+                                product.setPrice(rs.getFloat("price"));
+                                product.setThumb_name(rs.getString("thumb_name"));
+                                product.setThumb_path(rs.getString("thumb_path"));
+				return product;
+		}
+
+                   
+
+	});
+
+	return listCategory;
+
+    }
+
     
 }
 

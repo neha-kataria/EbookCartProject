@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  *
  * @author neha
+ * bean used to add subcategory under category
  */
 public class SubCategoryBean {
    // CategoryBean parent;
