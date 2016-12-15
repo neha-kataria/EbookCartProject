@@ -14,7 +14,7 @@
         <!-- Font Awesome -->
         <link href="resources/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <title>JSP Page</title>
+        <title>Home</title>
 
         <script>
             function ajaxcall(el) {
@@ -33,7 +33,7 @@
 
 
                         $.each(data, function (i, item) {
-                            
+
                             $('#heyo').append("<li style='color:black'><a href='/EbookCart/bookDetail?prod_name=" + item.productName + "&log_buy=0'  ><div class='product' id='insideproduct' >" +
                                     "<div class='info' id='book_info' >" + "<img src='assets/product/" + item.thumb_name + "' alt='img' >" +
                                     "<span class='book-name' id='book-name' style='color:black'>" + item.productName + "</span>" +
@@ -52,7 +52,7 @@
                     data: {},
                     dataType: 'json',
                     success: function (data)
-                    { 
+                    {
                         $.each(data, function (i, item) {
 
                             var s = item.categoryName;
@@ -61,7 +61,7 @@
                             $('#side').append("<li ><span><a onclick='ajaxcall(this);' style='color:#0182b5' id=" + item.categoryName + ">" + "<i class='fa fa-align-justify'></i>" + item.categoryName + "</a>" +
                                     "<a onclick='subcatgAjaxCall(this);' style='color:#0182b5' id=" + item.categoryName + "><span class='fa fa-chevron-down' style='width:3px;height:3px' ></span></a></span>" +
                                     "<ul id='addhere_" + item.categoryName + "'></ul></li>");
-                          
+
 
                         });
                     }
@@ -84,10 +84,10 @@
                             $('#heyo').append("<li style='margin-left:5%'><a href='/EbookCart/bookDetail?prod_name=" + item.productName + "&log_buy=0'><div class='product' id='insideproduct' >" +
                                     "<div class='info' id='book_info' >" + "<img src='assets/product/" + item.thumb_name + "' alt='img' >" +
                                     "<span class='book-name' id='book-name' style='color:blue; margin-left:10px;'>" + item.productName + "</span>" +
-                                    "<span class='avail_quant' style='color:blue; margin-left:10px;'>Available quantity:" + item.availQuant + "</span>"+
-                                    "<div  class='buy-btn' style='bottom:10px; left:20px;'>Rs <span class='price' style='color: black'><span class='low'></span>"+
-                                    item.price+"</span></div>"+
-                                        "</div></div></a></li>");
+                                    "<span class='avail_quant' style='color:blue; margin-left:10px;'>Available quantity:" + item.availQuant + "</span>" +
+                                    "<div  class='buy-btn' style='bottom:10px; left:20px;'>Rs <span class='price' style='color: black'><span class='low'></span>" +
+                                    item.price + "</span></div>" +
+                                    "</div></div></a></li>");
 
                         });
                     }
@@ -129,7 +129,7 @@
         <!-- main body -->
         <div style="background-image: url(resources/images/shell.png);width: 881px;height:1200px ; margin: 0 auto;padding: 0 50px 0 60px; position: relative;">
             <!-- Sidebar -->
-         
+
 
             <div id="sidebar" style="font-size: 16px; line-height: 24px;">
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -159,7 +159,7 @@
 
 
                     </div></div>
-              
+
             </div>
             <!-- End Sidebar -->
 

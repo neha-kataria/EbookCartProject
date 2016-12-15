@@ -25,7 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
- * @author neha this controller class contains mapping of methods to
+ * @author neha 
+ * this controller class contains mapping of methods to
  * authenticate user and admin also takes care of fb-login
  */
 @Controller

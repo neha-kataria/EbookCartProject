@@ -41,7 +41,7 @@ public class HomePageController extends ParentController {
     private AddProductDAO productDao;
     @Autowired
     private AddToCartDAO addtocartDao;
-   // private Object addTocartDao;
+    // private Object addTocartDao;
 
 //     @RequestMapping(value="/", method=RequestMethod.GET)
 //    public String init(Model model){
@@ -51,17 +51,15 @@ public class HomePageController extends ParentController {
 //        return "home";
 //      
 //    }
-    
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleException(ModelAndView model,Exception ex) {
-   // ModelAndView model = new ModelAndView("IOError");
- System.out.println("inside exception handler");
-    model.addObject("exception", ex.getMessage());
- model.setViewName("homepage");
-    return model;
-}
-    
-    
+    public ModelAndView handleException(ModelAndView model, Exception ex) {
+        // ModelAndView model = new ModelAndView("IOError");
+        System.out.println("inside exception handler");
+        model.addObject("exception", ex.getMessage());
+        model.setViewName("homepage");
+        return model;
+    }
+
     @RequestMapping(value = "/buyNow", method = RequestMethod.GET)
     public String buyNow(Model model, @RequestParam("prod_name") String name) {
         ProductBean ob = productDao.get(name);
@@ -71,7 +69,6 @@ public class HomePageController extends ParentController {
         return "buyNow";
 
     }
-
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
@@ -96,10 +93,7 @@ public class HomePageController extends ParentController {
 
     }
 
-
-    
-
-  /*  
+    /*  
     @RequestMapping(value = "/footer", method = RequestMethod.GET)
     public String footer(Model model) {
 
@@ -113,8 +107,7 @@ public class HomePageController extends ParentController {
         return "header";
 
     }
-*/
-
+     */
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
     public String offers(Model model) {
 
@@ -128,19 +121,23 @@ public class HomePageController extends ParentController {
         return "slider";
 
     }
-
-
+/**
+ * this method handles the mapping of add to cart page and adds the order
+ * @param model
+ * @param uname this tells username of logged_user
+ * @param prod this tells about the selected product
+ * @param num this extracts the quantity from the set cookie 
+ * @return 
+ */
     @RequestMapping(value = "/addToCart", method = RequestMethod.GET)
-    public ModelAndView addToCart(ModelAndView model,@ModelAttribute("logged_user") String uname,@ModelAttribute("selected") ProductBean prod,@CookieValue(value = "quant", defaultValue = "1") String num) {
+    public ModelAndView addToCart(ModelAndView model, @ModelAttribute("logged_user") String uname, @ModelAttribute("selected") ProductBean prod, @CookieValue(value = "quant", defaultValue = "1") String num) {
         AddToCartBean new_order = new AddToCartBean();
-                        new_order.setUserid(uname);
-                        new_order.setProduct_id(prod.getProductName());
-                        int n = Integer.parseInt(num);
-                        new_order.setQuantity(n);
-                        addtocartDao.saveOrUpdate(new_order);
-        
-        
-        
+        new_order.setUserid(uname);
+        new_order.setProduct_id(prod.getProductName());
+        int n = Integer.parseInt(num);
+        new_order.setQuantity(n);
+        addtocartDao.saveOrUpdate(new_order);
+
         List<AddToCartBean> ob = addtocartDao.user_list(uname);
 
         model.addObject("addtocartlist", ob);
@@ -148,17 +145,18 @@ public class HomePageController extends ParentController {
         return model;
 
     }
-    
-    @RequestMapping(value="/showAddToCartList", method = RequestMethod.GET)
-    public @ResponseBody List<AddToCartBean> showAddToCartTable(){
-      List<AddToCartBean> list=addtocartDao.list();
+
+    @RequestMapping(value = "/showAddToCartList", method = RequestMethod.GET)
+    public @ResponseBody
+    List<AddToCartBean> showAddToCartTable() {
+        List<AddToCartBean> list = addtocartDao.list();
         return list;
-        
+
     }
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public ModelAndView checkout(ModelAndView model) {
-        
+
         model.setViewName("checkoutPage");
         return model;
 
@@ -166,7 +164,7 @@ public class HomePageController extends ParentController {
 
     @RequestMapping(value = "/fb", method = RequestMethod.GET)
     public String fb(Model model) {
-        // return "sidemenu";
+    
         return "fbLogin";
 
     }
@@ -183,7 +181,7 @@ public class HomePageController extends ParentController {
     @RequestMapping(value = "/adminSubCategoryShowTable", method = RequestMethod.GET)
     public String adminSubCategoryShowTable(Model model, @RequestParam("catg_name") String name) {
         List<SubCategoryBean> list = subcategoryDao.list(name);
-        //    SubCategoryBean ob=subcategoryDao.list(name);           
+                   
         model.addAttribute("catg_sub", list);
         return "adminSubCategoryShowTable";
 
@@ -193,8 +191,6 @@ public class HomePageController extends ParentController {
     public ModelAndView adminProductShowTable(ModelAndView model) {
         List<ProductBean> list = productDao.list();
 
-        //model.addAttribute("catg_list",list);
-        //  return "adminProductShowTable";
         model.addObject("prod_list");
         model.setViewName("adminProductShowTable");
         return model;

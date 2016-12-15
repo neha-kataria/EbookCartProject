@@ -23,16 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author neha
+ * this controller class handles the logout session
  */
 @Controller
-//@SessionAttributes({"logged_user","prod_list","catg_list"})
-
 public class LogoutController {
     @Autowired
     AddProductDAO productDao;
     @Autowired
     AddCategoryDAO categoryDao;
-    
+   /* 
      @RequestMapping(value = "/signOut", method = RequestMethod.GET)
     public ModelAndView logout(ModelAndView model,HttpSession session) {
         session.invalidate();
@@ -53,11 +52,12 @@ public class LogoutController {
 
 model.setViewName("redirect:loggedOut");
         return model;
-    }
+    }*/
     
      @RequestMapping(value = "/loggedOut", method = RequestMethod.GET)
-    public ModelAndView logoutRedirect(ModelAndView model,SessionStatus sessionStatus) {
+    public ModelAndView logoutRedirect(ModelAndView model,SessionStatus sessionStatus,HttpSession session) {
         sessionStatus.setComplete();
+          session.invalidate();
         System.out.println("after logout>>>>>>>>><<<<<<<<<<<");
         model.addObject("logged_user", "Guest");
         model.setViewName("redirect:/");
