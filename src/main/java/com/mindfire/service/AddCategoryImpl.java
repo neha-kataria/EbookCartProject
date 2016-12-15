@@ -19,6 +19,7 @@ import org.springframework.jdbc.core.RowMapper;
 /**
  *
  * @author neha
+ * this class add/delete/get/list category
  */
 public class AddCategoryImpl  implements AddCategoryDAO{
     private JdbcTemplate jdbcTemplate;
@@ -30,7 +31,7 @@ public class AddCategoryImpl  implements AddCategoryDAO{
     @Override
     public void saveOrUpdate(CategoryBean category) {
         // implementation details goes here...
-       // String filename=category.getThumb_name()+".jpg";
+       
         category.setC_id(0);
                 if (category.getC_id() > 0) {
 		// update
@@ -100,10 +101,6 @@ public class AddCategoryImpl  implements AddCategoryDAO{
 			aCategory.setCatg_path(rs.getString("path"));
                         aCategory.setCatg_thumb_path(rs.getString("thumb_path"));
                         aCategory.setCatg_thumb_name(rs.getString("thumb_name"));
-//                        if(aCategory.getCatg_thumb_path().endsWith("//"))
-//                {
-//                    aCategory.setCatg_thumb_name("nothumb");
-//                }
 
 			return aCategory;
 		}

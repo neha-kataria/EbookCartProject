@@ -54,7 +54,7 @@ model.setViewName("redirect:loggedOut");
         return model;
     }*/
     
-     @RequestMapping(value = "/loggedOut", method = RequestMethod.GET)
+     @RequestMapping(value = "/signOut", method = RequestMethod.GET)
     public ModelAndView logoutRedirect(ModelAndView model,SessionStatus sessionStatus,HttpSession session) {
         sessionStatus.setComplete();
           session.invalidate();

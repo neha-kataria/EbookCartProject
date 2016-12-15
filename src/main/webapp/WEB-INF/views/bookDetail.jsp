@@ -74,7 +74,11 @@
 //                        }
 
 function getValue(){
-               var retVal = prompt("Enter quantity of this product : ", "enter here");
+    var retVal =1;
+    do{ 
+    
+               retVal = prompt("Enter quantity of this product (between 1 & 15): ", "1");
+           }while(retVal<1 || retVal >15);
              //  document.write("You have entered : " + retVal);
               var s=document.getElementById('prodname').innerHTML;
              document.cookie="quant="+retVal;

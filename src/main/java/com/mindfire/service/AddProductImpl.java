@@ -5,7 +5,6 @@
  */
 package com.mindfire.service;
 
-import com.mindfire.bean.CategoryBean;
 import com.mindfire.bean.ProductBean;
 import com.mindfire.dao.AddProductDAO;
 import java.sql.ResultSet;
@@ -20,6 +19,7 @@ import org.springframework.jdbc.core.RowMapper;
 /**
  *
  * @author neha
+ * this class contains methods to add/update/delete/get/list product 
  */
 public class AddProductImpl implements AddProductDAO{
     
@@ -32,7 +32,7 @@ public class AddProductImpl implements AddProductDAO{
     @Override
     public void saveOrUpdate(ProductBean product) {
         // implementation details goes here...
-       // String filename=category.getThumb_name()+".jpg";
+      
         product.setP_id(0);
                 if (product.getP_id() > 0) {
 		// update

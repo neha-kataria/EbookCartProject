@@ -72,8 +72,16 @@
 
 function totalbill(){
     var cost=document.getElementById('price').value;
+    
    // alert(cost);
     var n=document.getElementById('quantity').value;
+    if(n<1 || n>15){
+        alert("enter between 1 & 15");
+        
+        document.getElementById('quantity').value=1;
+        n=1;
+    }
+    if(cost)
     document.getElementById('totalbill').innerHTML="Your Total Amount:"+(cost*n);
 }
                  function setCookie(ele) { 

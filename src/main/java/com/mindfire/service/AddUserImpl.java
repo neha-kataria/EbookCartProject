@@ -5,7 +5,6 @@
  */
 package com.mindfire.service;
 
-import com.mindfire.bean.CategoryBean;
 import com.mindfire.bean.RegisterUserBean;
 import com.mindfire.dao.AddUserDAO;
 import java.sql.ResultSet;
@@ -20,6 +19,7 @@ import org.springframework.jdbc.core.RowMapper;
 /**
  *
  * @author neha
+ * class implementing interface AddUserDao to add new user
  */
 public class AddUserImpl implements AddUserDAO {
 

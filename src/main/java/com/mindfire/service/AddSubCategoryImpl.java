@@ -20,6 +20,7 @@ import org.springframework.jdbc.core.RowMapper;
 /**
  *
  * @author neha
+ * this class implements AddSubCategoryDAO inteface to add subcategory
  */
 public class AddSubCategoryImpl implements AddSubCategoryDAO {
     private JdbcTemplate jdbcTemplate;

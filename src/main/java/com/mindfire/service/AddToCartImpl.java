@@ -6,7 +6,6 @@
 package com.mindfire.service;
 
 import com.mindfire.bean.AddToCartBean;
-import com.mindfire.bean.RegisterUserBean;
 import com.mindfire.dao.AddToCartDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +19,7 @@ import org.springframework.jdbc.core.RowMapper;
 /**
  *
  * @author neha
+ * this class implements AddToCartDao to add orders in cart
  */
 public class AddToCartImpl implements AddToCartDAO{
     
@@ -50,7 +50,7 @@ public class AddToCartImpl implements AddToCartDAO{
 
     @Override
     public void delete(String name) {
-          String sql = "DELETE FROM registered_user WHERE username=?";
+          String sql = "DELETE FROM cart WHERE username=?";
         jdbcTemplate.update(sql, name);
     }
 
@@ -97,7 +97,7 @@ public class AddToCartImpl implements AddToCartDAO{
                    
                     return bean;
 
-              //  return aUser;
+            
             }
 
         });
@@ -125,7 +125,7 @@ public class AddToCartImpl implements AddToCartDAO{
                    
                     return bean;
 
-              //  return aUser;
+          
             }
 
         });
